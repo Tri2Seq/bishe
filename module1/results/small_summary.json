@@ -1,0 +1,26 @@
+{
+  "MILP": {
+    "makespan": 288.33333,
+    "energy": 4040.0,
+    "weighted_tardiness": 0.0,
+    "solve_time": 3.5264878273010254
+  },
+  "Greedy-FCFS": {
+    "makespan": 1020.5,
+    "energy": 4590.0,
+    "weighted_tardiness": 815.0,
+    "solve_time": 9.703636169433594e-05
+  },
+  "Independent": {
+    "makespan": 1012.3333333333334,
+    "energy": 4690.0,
+    "weighted_tardiness": 1653.0000000000005,
+    "solve_time": 6.413459777832031e-05
+  },
+  "MILP-Makespan": {
+    "makespan": 288.33333,
+    "energy": 4200.0,
+    "weighted_tardiness": 0.0,
+    "solve_time": 1.1092982292175293
+  }
+}

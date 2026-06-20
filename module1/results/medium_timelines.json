@@ -1,0 +1,3651 @@
+{
+  "0": [
+    {
+      "type": "WALK",
+      "start": 0.0,
+      "end": 37.5,
+      "floor": 7,
+      "robot_id": 0,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 37.5,
+      "end": 47.5,
+      "floor": 7,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 16
+    },
+    {
+      "type": "WALK",
+      "start": 47.5,
+      "end": 110.0,
+      "floor": 7,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 16
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 110.0,
+      "end": 118.0,
+      "floor": 7,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "task_id": 16,
+      "elevator_id": 1
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 118.0,
+      "end": 125.0,
+      "floor": 7,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "task_id": 16,
+      "elevator_id": 1
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 125.0,
+      "end": 130.0,
+      "floor": 7,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 16,
+      "elevator_id": 1
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 130.0,
+      "end": 140.0,
+      "floor": 7,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 16,
+      "elevator_id": 1,
+      "dest_floor": 4
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 140.0,
+      "end": 145.0,
+      "floor": 4,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "task_id": 16,
+      "elevator_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 145.0,
+      "end": 207.5,
+      "floor": 4,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 16
+    },
+    {
+      "type": "DELIVER",
+      "start": 207.5,
+      "end": 217.5,
+      "floor": 4,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 16
+    },
+    {
+      "type": "WALK",
+      "start": 217.5,
+      "end": 280.0,
+      "floor": 4,
+      "robot_id": 0,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 280.0,
+      "end": 288.0,
+      "floor": 4,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 288.0,
+      "end": 295.0,
+      "floor": 4,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 295.0,
+      "end": 300.0,
+      "floor": 4,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 300.0,
+      "end": 318.0,
+      "floor": 4,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 8
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 318.0,
+      "end": 323.0,
+      "floor": 8,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 323.0,
+      "end": 360.5,
+      "floor": 8,
+      "robot_id": 0,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 360.5,
+      "end": 370.5,
+      "floor": 8,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 8
+    },
+    {
+      "type": "WALK",
+      "start": 370.5,
+      "end": 433.0,
+      "floor": 8,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 8
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 433.0,
+      "end": 441.0,
+      "floor": 8,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "task_id": 8,
+      "elevator_id": 3
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 441.0,
+      "end": 448.0,
+      "floor": 8,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "task_id": 8,
+      "elevator_id": 3
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 448.0,
+      "end": 453.0,
+      "floor": 8,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 8,
+      "elevator_id": 3
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 453.0,
+      "end": 459.67,
+      "floor": 8,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 8,
+      "elevator_id": 3,
+      "dest_floor": 9
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 459.67,
+      "end": 464.67,
+      "floor": 9,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "task_id": 8,
+      "elevator_id": 3
+    },
+    {
+      "type": "WALK",
+      "start": 464.67,
+      "end": 527.17,
+      "floor": 9,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 8
+    },
+    {
+      "type": "DELIVER",
+      "start": 527.17,
+      "end": 537.17,
+      "floor": 9,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 8
+    },
+    {
+      "type": "WALK",
+      "start": 537.17,
+      "end": 599.67,
+      "floor": 9,
+      "robot_id": 0,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 599.67,
+      "end": 607.67,
+      "floor": 9,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 607.67,
+      "end": 614.67,
+      "floor": 9,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 614.67,
+      "end": 619.67,
+      "floor": 9,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 619.67,
+      "end": 645.17,
+      "floor": 9,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 2
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 645.17,
+      "end": 650.17,
+      "floor": 2,
+      "robot_id": 0,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 650.17,
+      "end": 687.67,
+      "floor": 2,
+      "robot_id": 0,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 687.67,
+      "end": 697.67,
+      "floor": 2,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 7
+    },
+    {
+      "type": "WALK",
+      "start": 697.67,
+      "end": 735.17,
+      "floor": 2,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 7
+    },
+    {
+      "type": "DELIVER",
+      "start": 735.17,
+      "end": 745.17,
+      "floor": 2,
+      "robot_id": 0,
+      "needs_gpu": false,
+      "task_id": 7
+    }
+  ],
+  "1": [
+    {
+      "type": "WALK",
+      "start": 0.0,
+      "end": 62.5,
+      "floor": 4,
+      "robot_id": 1,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 62.5,
+      "end": 70.5,
+      "floor": 4,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 70.5,
+      "end": 77.5,
+      "floor": 4,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 77.5,
+      "end": 82.5,
+      "floor": 4,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 82.5,
+      "end": 93.0,
+      "floor": 4,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 3
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 93.0,
+      "end": 98.0,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 98.0,
+      "end": 135.5,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 135.5,
+      "end": 145.5,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 22
+    },
+    {
+      "type": "WALK",
+      "start": 145.5,
+      "end": 208.0,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 22
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 208.0,
+      "end": 216.0,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "task_id": 22,
+      "elevator_id": 1
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 216.0,
+      "end": 223.0,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "task_id": 22,
+      "elevator_id": 1
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 223.0,
+      "end": 228.0,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 22,
+      "elevator_id": 1
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 228.0,
+      "end": 241.33,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 22,
+      "elevator_id": 1,
+      "dest_floor": 8
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 241.33,
+      "end": 246.33,
+      "floor": 8,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "task_id": 22,
+      "elevator_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 246.33,
+      "end": 308.83,
+      "floor": 8,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 22
+    },
+    {
+      "type": "DELIVER",
+      "start": 308.83,
+      "end": 318.83,
+      "floor": 8,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 22
+    },
+    {
+      "type": "WALK",
+      "start": 318.83,
+      "end": 381.33,
+      "floor": 8,
+      "robot_id": 1,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 381.33,
+      "end": 389.33,
+      "floor": 8,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 389.33,
+      "end": 396.33,
+      "floor": 8,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 396.33,
+      "end": 401.33,
+      "floor": 8,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 401.33,
+      "end": 421.83,
+      "floor": 8,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 3
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 421.83,
+      "end": 426.83,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 426.83,
+      "end": 464.33,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 464.33,
+      "end": 474.33,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 24
+    },
+    {
+      "type": "WALK",
+      "start": 474.33,
+      "end": 536.83,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 24
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 536.83,
+      "end": 544.83,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "task_id": 24,
+      "elevator_id": 1
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 544.83,
+      "end": 551.83,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "task_id": 24,
+      "elevator_id": 1
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 551.83,
+      "end": 556.83,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 24,
+      "elevator_id": 1
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 556.83,
+      "end": 565.17,
+      "floor": 3,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 24,
+      "elevator_id": 1,
+      "dest_floor": 1
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 565.17,
+      "end": 570.17,
+      "floor": 1,
+      "robot_id": 1,
+      "needs_gpu": true,
+      "task_id": 24,
+      "elevator_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 570.17,
+      "end": 632.67,
+      "floor": 1,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 24
+    },
+    {
+      "type": "DELIVER",
+      "start": 632.67,
+      "end": 642.67,
+      "floor": 1,
+      "robot_id": 1,
+      "needs_gpu": false,
+      "task_id": 24
+    }
+  ],
+  "2": [],
+  "3": [
+    {
+      "type": "WALK",
+      "start": 0.0,
+      "end": 20.0,
+      "floor": 5,
+      "robot_id": 3,
+      "needs_gpu": false
+    },
+    {
+      "type": "IDLE",
+      "start": 20.0,
+      "end": 26.0,
+      "floor": 5,
+      "robot_id": 3,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 26.0,
+      "end": 36.0,
+      "floor": 5,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 36.0,
+      "end": 69.33,
+      "floor": 5,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 1
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 69.33,
+      "end": 77.33,
+      "floor": 5,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 1,
+      "elevator_id": 3
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 77.33,
+      "end": 84.33,
+      "floor": 5,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 1,
+      "elevator_id": 3
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 84.33,
+      "end": 89.33,
+      "floor": 5,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 1,
+      "elevator_id": 3
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 89.33,
+      "end": 102.67,
+      "floor": 5,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 1,
+      "elevator_id": 3,
+      "dest_floor": 10
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 102.67,
+      "end": 107.67,
+      "floor": 10,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 1,
+      "elevator_id": 3
+    },
+    {
+      "type": "WALK",
+      "start": 107.67,
+      "end": 141.0,
+      "floor": 10,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 1
+    },
+    {
+      "type": "DELIVER",
+      "start": 141.0,
+      "end": 151.0,
+      "floor": 10,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 151.0,
+      "end": 184.33,
+      "floor": 10,
+      "robot_id": 3,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 184.33,
+      "end": 192.33,
+      "floor": 10,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 192.33,
+      "end": 199.33,
+      "floor": 10,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 199.33,
+      "end": 204.33,
+      "floor": 10,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 204.33,
+      "end": 222.33,
+      "floor": 10,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 6
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 222.33,
+      "end": 227.33,
+      "floor": 6,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 227.33,
+      "end": 247.33,
+      "floor": 6,
+      "robot_id": 3,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 247.33,
+      "end": 257.33,
+      "floor": 6,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 257.33,
+      "end": 290.67,
+      "floor": 6,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 0
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 290.67,
+      "end": 298.67,
+      "floor": 6,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 0,
+      "elevator_id": 1
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 298.67,
+      "end": 305.67,
+      "floor": 6,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 0,
+      "elevator_id": 1
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 305.67,
+      "end": 310.67,
+      "floor": 6,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 0,
+      "elevator_id": 1
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 310.67,
+      "end": 319.0,
+      "floor": 6,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 0,
+      "elevator_id": 1,
+      "dest_floor": 8
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 319.0,
+      "end": 324.0,
+      "floor": 8,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 0,
+      "elevator_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 324.0,
+      "end": 357.33,
+      "floor": 8,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 0
+    },
+    {
+      "type": "DELIVER",
+      "start": 357.33,
+      "end": 367.33,
+      "floor": 8,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 367.33,
+      "end": 400.67,
+      "floor": 8,
+      "robot_id": 3,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 400.67,
+      "end": 408.67,
+      "floor": 8,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 408.67,
+      "end": 415.67,
+      "floor": 8,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 415.67,
+      "end": 420.67,
+      "floor": 8,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 420.67,
+      "end": 438.67,
+      "floor": 8,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 4
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 438.67,
+      "end": 443.67,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 443.67,
+      "end": 463.67,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 463.67,
+      "end": 473.67,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 19
+    },
+    {
+      "type": "WALK",
+      "start": 473.67,
+      "end": 493.67,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 19
+    },
+    {
+      "type": "DELIVER",
+      "start": 493.67,
+      "end": 503.67,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 19
+    },
+    {
+      "type": "WALK",
+      "start": 503.67,
+      "end": 537.0,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 537.0,
+      "end": 545.0,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 545.0,
+      "end": 552.0,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 552.0,
+      "end": 557.0,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 557.0,
+      "end": 567.5,
+      "floor": 4,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 3
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 567.5,
+      "end": 572.5,
+      "floor": 3,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 572.5,
+      "end": 592.5,
+      "floor": 3,
+      "robot_id": 3,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 592.5,
+      "end": 602.5,
+      "floor": 3,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 11
+    },
+    {
+      "type": "WALK",
+      "start": 602.5,
+      "end": 635.83,
+      "floor": 3,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 11
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 635.83,
+      "end": 643.83,
+      "floor": 3,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 11,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 643.83,
+      "end": 650.83,
+      "floor": 3,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 11,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 650.83,
+      "end": 655.83,
+      "floor": 3,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 11,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 655.83,
+      "end": 668.83,
+      "floor": 3,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 11,
+      "elevator_id": 0,
+      "dest_floor": 1
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 668.83,
+      "end": 673.83,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 11,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 673.83,
+      "end": 707.17,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 11
+    },
+    {
+      "type": "DELIVER",
+      "start": 707.17,
+      "end": 717.17,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 11
+    },
+    {
+      "type": "WALK",
+      "start": 717.17,
+      "end": 737.17,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 737.17,
+      "end": 747.17,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 10
+    },
+    {
+      "type": "WALK",
+      "start": 747.17,
+      "end": 780.5,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 10
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 780.5,
+      "end": 788.5,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 10,
+      "elevator_id": 1
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 788.5,
+      "end": 795.5,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 10,
+      "elevator_id": 1
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 795.5,
+      "end": 800.5,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 10,
+      "elevator_id": 1
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 800.5,
+      "end": 818.83,
+      "floor": 1,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 10,
+      "elevator_id": 1,
+      "dest_floor": 9
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 818.83,
+      "end": 823.83,
+      "floor": 9,
+      "robot_id": 3,
+      "needs_gpu": true,
+      "task_id": 10,
+      "elevator_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 823.83,
+      "end": 857.17,
+      "floor": 9,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 10
+    },
+    {
+      "type": "DELIVER",
+      "start": 857.17,
+      "end": 867.17,
+      "floor": 9,
+      "robot_id": 3,
+      "needs_gpu": false,
+      "task_id": 10
+    }
+  ],
+  "4": [
+    {
+      "type": "WALK",
+      "start": 0.0,
+      "end": 33.33,
+      "floor": 7,
+      "robot_id": 4,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 33.33,
+      "end": 41.33,
+      "floor": 7,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 41.33,
+      "end": 48.33,
+      "floor": 7,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 48.33,
+      "end": 53.33,
+      "floor": 7,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 53.33,
+      "end": 63.83,
+      "floor": 7,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 6
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 63.83,
+      "end": 68.83,
+      "floor": 6,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 68.83,
+      "end": 88.83,
+      "floor": 6,
+      "robot_id": 4,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 88.83,
+      "end": 98.83,
+      "floor": 6,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 25
+    },
+    {
+      "type": "WALK",
+      "start": 98.83,
+      "end": 132.17,
+      "floor": 6,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 25
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 132.17,
+      "end": 140.17,
+      "floor": 6,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "task_id": 25,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 140.17,
+      "end": 147.17,
+      "floor": 6,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "task_id": 25,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 147.17,
+      "end": 152.17,
+      "floor": 6,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 25,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 152.17,
+      "end": 172.67,
+      "floor": 6,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 25,
+      "elevator_id": 0,
+      "dest_floor": 1
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 172.67,
+      "end": 177.67,
+      "floor": 1,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "task_id": 25,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 177.67,
+      "end": 211.0,
+      "floor": 1,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 25
+    },
+    {
+      "type": "DELIVER",
+      "start": 211.0,
+      "end": 221.0,
+      "floor": 1,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 25
+    },
+    {
+      "type": "WALK",
+      "start": 221.0,
+      "end": 254.33,
+      "floor": 1,
+      "robot_id": 4,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 254.33,
+      "end": 262.33,
+      "floor": 1,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 262.33,
+      "end": 269.33,
+      "floor": 1,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 269.33,
+      "end": 274.33,
+      "floor": 1,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 274.33,
+      "end": 289.83,
+      "floor": 1,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 4
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 289.83,
+      "end": 294.83,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 294.83,
+      "end": 314.83,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 314.83,
+      "end": 324.83,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 17
+    },
+    {
+      "type": "WALK",
+      "start": 324.83,
+      "end": 344.83,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 17
+    },
+    {
+      "type": "DELIVER",
+      "start": 344.83,
+      "end": 354.83,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 17
+    },
+    {
+      "type": "WALK",
+      "start": 354.83,
+      "end": 388.17,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 388.17,
+      "end": 396.17,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 396.17,
+      "end": 403.17,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 403.17,
+      "end": 408.17,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 408.17,
+      "end": 431.17,
+      "floor": 4,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 10
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 431.17,
+      "end": 436.17,
+      "floor": 10,
+      "robot_id": 4,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 436.17,
+      "end": 456.17,
+      "floor": 10,
+      "robot_id": 4,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 456.17,
+      "end": 466.17,
+      "floor": 10,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 18
+    },
+    {
+      "type": "WALK",
+      "start": 466.17,
+      "end": 486.17,
+      "floor": 10,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 18
+    },
+    {
+      "type": "DELIVER",
+      "start": 486.17,
+      "end": 496.17,
+      "floor": 10,
+      "robot_id": 4,
+      "needs_gpu": false,
+      "task_id": 18
+    }
+  ],
+  "5": [
+    {
+      "type": "WALK",
+      "start": 0.0,
+      "end": 33.33,
+      "floor": 10,
+      "robot_id": 5,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 33.33,
+      "end": 41.33,
+      "floor": 10,
+      "robot_id": 5,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 41.33,
+      "end": 48.33,
+      "floor": 10,
+      "robot_id": 5,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 48.33,
+      "end": 53.33,
+      "floor": 10,
+      "robot_id": 5,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 53.33,
+      "end": 63.83,
+      "floor": 10,
+      "robot_id": 5,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 9
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 63.83,
+      "end": 68.83,
+      "floor": 9,
+      "robot_id": 5,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 68.83,
+      "end": 88.83,
+      "floor": 9,
+      "robot_id": 5,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 88.83,
+      "end": 98.83,
+      "floor": 9,
+      "robot_id": 5,
+      "needs_gpu": false,
+      "task_id": 21
+    },
+    {
+      "type": "WALK",
+      "start": 98.83,
+      "end": 132.17,
+      "floor": 9,
+      "robot_id": 5,
+      "needs_gpu": false,
+      "task_id": 21
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 132.17,
+      "end": 140.17,
+      "floor": 9,
+      "robot_id": 5,
+      "needs_gpu": true,
+      "task_id": 21,
+      "elevator_id": 1
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 140.17,
+      "end": 147.17,
+      "floor": 9,
+      "robot_id": 5,
+      "needs_gpu": true,
+      "task_id": 21,
+      "elevator_id": 1
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 147.17,
+      "end": 152.17,
+      "floor": 9,
+      "robot_id": 5,
+      "needs_gpu": false,
+      "task_id": 21,
+      "elevator_id": 1
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 152.17,
+      "end": 162.17,
+      "floor": 9,
+      "robot_id": 5,
+      "needs_gpu": false,
+      "task_id": 21,
+      "elevator_id": 1,
+      "dest_floor": 6
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 162.17,
+      "end": 167.17,
+      "floor": 6,
+      "robot_id": 5,
+      "needs_gpu": true,
+      "task_id": 21,
+      "elevator_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 167.17,
+      "end": 200.5,
+      "floor": 6,
+      "robot_id": 5,
+      "needs_gpu": false,
+      "task_id": 21
+    },
+    {
+      "type": "DELIVER",
+      "start": 200.5,
+      "end": 210.5,
+      "floor": 6,
+      "robot_id": 5,
+      "needs_gpu": false,
+      "task_id": 21
+    }
+  ],
+  "6": [
+    {
+      "type": "WALK",
+      "start": 0.0,
+      "end": 20.0,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false
+    },
+    {
+      "type": "IDLE",
+      "start": 20.0,
+      "end": 26.0,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 26.0,
+      "end": 36.0,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 14
+    },
+    {
+      "type": "WALK",
+      "start": 36.0,
+      "end": 56.0,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 14
+    },
+    {
+      "type": "DELIVER",
+      "start": 56.0,
+      "end": 66.0,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 14
+    },
+    {
+      "type": "WALK",
+      "start": 66.0,
+      "end": 86.0,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 86.0,
+      "end": 96.0,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 29
+    },
+    {
+      "type": "WALK",
+      "start": 96.0,
+      "end": 129.33,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 29
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 129.33,
+      "end": 137.33,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": true,
+      "task_id": 29,
+      "elevator_id": 3
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 137.33,
+      "end": 144.33,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": true,
+      "task_id": 29,
+      "elevator_id": 3
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 144.33,
+      "end": 149.33,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 29,
+      "elevator_id": 3
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 149.33,
+      "end": 156.0,
+      "floor": 3,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 29,
+      "elevator_id": 3,
+      "dest_floor": 4
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 156.0,
+      "end": 161.0,
+      "floor": 4,
+      "robot_id": 6,
+      "needs_gpu": true,
+      "task_id": 29,
+      "elevator_id": 3
+    },
+    {
+      "type": "WALK",
+      "start": 161.0,
+      "end": 194.33,
+      "floor": 4,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 29
+    },
+    {
+      "type": "DELIVER",
+      "start": 194.33,
+      "end": 204.33,
+      "floor": 4,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 29
+    },
+    {
+      "type": "WALK",
+      "start": 204.33,
+      "end": 237.67,
+      "floor": 4,
+      "robot_id": 6,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 237.67,
+      "end": 245.67,
+      "floor": 4,
+      "robot_id": 6,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 245.67,
+      "end": 252.67,
+      "floor": 4,
+      "robot_id": 6,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 252.67,
+      "end": 257.67,
+      "floor": 4,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 257.67,
+      "end": 273.17,
+      "floor": 4,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 1
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 273.17,
+      "end": 278.17,
+      "floor": 1,
+      "robot_id": 6,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 278.17,
+      "end": 298.17,
+      "floor": 1,
+      "robot_id": 6,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 298.17,
+      "end": 308.17,
+      "floor": 1,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 27
+    },
+    {
+      "type": "WALK",
+      "start": 308.17,
+      "end": 341.5,
+      "floor": 1,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 27
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 341.5,
+      "end": 349.5,
+      "floor": 1,
+      "robot_id": 6,
+      "needs_gpu": true,
+      "task_id": 27,
+      "elevator_id": 1
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 349.5,
+      "end": 356.5,
+      "floor": 1,
+      "robot_id": 6,
+      "needs_gpu": true,
+      "task_id": 27,
+      "elevator_id": 1
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 356.5,
+      "end": 361.5,
+      "floor": 1,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 27,
+      "elevator_id": 1
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 361.5,
+      "end": 378.17,
+      "floor": 1,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 27,
+      "elevator_id": 1,
+      "dest_floor": 8
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 378.17,
+      "end": 383.17,
+      "floor": 8,
+      "robot_id": 6,
+      "needs_gpu": true,
+      "task_id": 27,
+      "elevator_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 383.17,
+      "end": 416.5,
+      "floor": 8,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 27
+    },
+    {
+      "type": "DELIVER",
+      "start": 416.5,
+      "end": 426.5,
+      "floor": 8,
+      "robot_id": 6,
+      "needs_gpu": false,
+      "task_id": 27
+    }
+  ],
+  "7": [
+    {
+      "type": "WALK",
+      "start": 0.0,
+      "end": 33.33,
+      "floor": 7,
+      "robot_id": 7,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 33.33,
+      "end": 41.33,
+      "floor": 7,
+      "robot_id": 7,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 41.33,
+      "end": 48.33,
+      "floor": 7,
+      "robot_id": 7,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 48.33,
+      "end": 53.33,
+      "floor": 7,
+      "robot_id": 7,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 53.33,
+      "end": 76.33,
+      "floor": 7,
+      "robot_id": 7,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 1
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 76.33,
+      "end": 81.33,
+      "floor": 1,
+      "robot_id": 7,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 81.33,
+      "end": 101.33,
+      "floor": 1,
+      "robot_id": 7,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 101.33,
+      "end": 111.33,
+      "floor": 1,
+      "robot_id": 7,
+      "needs_gpu": false,
+      "task_id": 28
+    },
+    {
+      "type": "WALK",
+      "start": 111.33,
+      "end": 144.67,
+      "floor": 1,
+      "robot_id": 7,
+      "needs_gpu": false,
+      "task_id": 28
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 144.67,
+      "end": 152.67,
+      "floor": 1,
+      "robot_id": 7,
+      "needs_gpu": true,
+      "task_id": 28,
+      "elevator_id": 3
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 152.67,
+      "end": 159.67,
+      "floor": 1,
+      "robot_id": 7,
+      "needs_gpu": true,
+      "task_id": 28,
+      "elevator_id": 3
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 159.67,
+      "end": 164.67,
+      "floor": 1,
+      "robot_id": 7,
+      "needs_gpu": false,
+      "task_id": 28,
+      "elevator_id": 3
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 164.67,
+      "end": 178.0,
+      "floor": 1,
+      "robot_id": 7,
+      "needs_gpu": false,
+      "task_id": 28,
+      "elevator_id": 3,
+      "dest_floor": 6
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 178.0,
+      "end": 183.0,
+      "floor": 6,
+      "robot_id": 7,
+      "needs_gpu": true,
+      "task_id": 28,
+      "elevator_id": 3
+    },
+    {
+      "type": "WALK",
+      "start": 183.0,
+      "end": 216.33,
+      "floor": 6,
+      "robot_id": 7,
+      "needs_gpu": false,
+      "task_id": 28
+    },
+    {
+      "type": "DELIVER",
+      "start": 216.33,
+      "end": 226.33,
+      "floor": 6,
+      "robot_id": 7,
+      "needs_gpu": false,
+      "task_id": 28
+    }
+  ],
+  "8": [
+    {
+      "type": "WALK",
+      "start": 0.0,
+      "end": 20.0,
+      "floor": 8,
+      "robot_id": 8,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 20.0,
+      "end": 28.0,
+      "floor": 8,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 28.0,
+      "end": 35.0,
+      "floor": 8,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 35.0,
+      "end": 40.0,
+      "floor": 8,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 40.0,
+      "end": 50.5,
+      "floor": 8,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 7
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 50.5,
+      "end": 55.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 55.5,
+      "end": 67.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 67.5,
+      "end": 77.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 12
+    },
+    {
+      "type": "WALK",
+      "start": 77.5,
+      "end": 89.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 12
+    },
+    {
+      "type": "DELIVER",
+      "start": 89.5,
+      "end": 99.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 12
+    },
+    {
+      "type": "WALK",
+      "start": 99.5,
+      "end": 119.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 119.5,
+      "end": 127.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 127.5,
+      "end": 134.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 134.5,
+      "end": 139.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 139.5,
+      "end": 152.5,
+      "floor": 7,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 9
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 152.5,
+      "end": 157.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 157.5,
+      "end": 169.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 169.5,
+      "end": 179.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 15
+    },
+    {
+      "type": "WALK",
+      "start": 179.5,
+      "end": 199.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 15
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 199.5,
+      "end": 207.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "task_id": 15,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 207.5,
+      "end": 214.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "task_id": 15,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 214.5,
+      "end": 219.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 15,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 219.5,
+      "end": 230.0,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 15,
+      "elevator_id": 0,
+      "dest_floor": 10
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 230.0,
+      "end": 235.0,
+      "floor": 10,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "task_id": 15,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 235.0,
+      "end": 255.0,
+      "floor": 10,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 15
+    },
+    {
+      "type": "DELIVER",
+      "start": 255.0,
+      "end": 265.0,
+      "floor": 10,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 15
+    },
+    {
+      "type": "WALK",
+      "start": 265.0,
+      "end": 285.0,
+      "floor": 10,
+      "robot_id": 8,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 285.0,
+      "end": 293.0,
+      "floor": 10,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 293.0,
+      "end": 300.0,
+      "floor": 10,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 300.0,
+      "end": 305.0,
+      "floor": 10,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 305.0,
+      "end": 315.5,
+      "floor": 10,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 9
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 315.5,
+      "end": 320.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 320.5,
+      "end": 332.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 332.5,
+      "end": 342.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 23
+    },
+    {
+      "type": "WALK",
+      "start": 342.5,
+      "end": 362.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 23
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 362.5,
+      "end": 370.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "task_id": 23,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 370.5,
+      "end": 377.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "task_id": 23,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 377.5,
+      "end": 382.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 23,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 382.5,
+      "end": 410.5,
+      "floor": 9,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 23,
+      "elevator_id": 0,
+      "dest_floor": 1
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 410.5,
+      "end": 415.5,
+      "floor": 1,
+      "robot_id": 8,
+      "needs_gpu": true,
+      "task_id": 23,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 415.5,
+      "end": 435.5,
+      "floor": 1,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 23
+    },
+    {
+      "type": "DELIVER",
+      "start": 435.5,
+      "end": 445.5,
+      "floor": 1,
+      "robot_id": 8,
+      "needs_gpu": false,
+      "task_id": 23
+    }
+  ],
+  "9": [
+    {
+      "type": "WALK",
+      "start": 0.0,
+      "end": 12.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "IDLE",
+      "start": 12.0,
+      "end": 28.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 28.0,
+      "end": 38.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 9
+    },
+    {
+      "type": "WALK",
+      "start": 38.0,
+      "end": 58.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 9
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 58.0,
+      "end": 66.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 9,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 66.0,
+      "end": 73.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 9,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 73.0,
+      "end": 78.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 9,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 78.0,
+      "end": 96.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 9,
+      "elevator_id": 0,
+      "dest_floor": 9
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 96.0,
+      "end": 101.0,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 9,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 101.0,
+      "end": 121.0,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 9
+    },
+    {
+      "type": "DELIVER",
+      "start": 121.0,
+      "end": 131.0,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 9
+    },
+    {
+      "type": "WALK",
+      "start": 131.0,
+      "end": 151.0,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 151.0,
+      "end": 159.0,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 159.0,
+      "end": 166.0,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 166.0,
+      "end": 171.0,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 171.0,
+      "end": 189.0,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 5
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 189.0,
+      "end": 194.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 194.0,
+      "end": 206.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 206.0,
+      "end": 216.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 13
+    },
+    {
+      "type": "WALK",
+      "start": 216.0,
+      "end": 236.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 13
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 236.0,
+      "end": 244.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 13,
+      "elevator_id": 1
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 244.0,
+      "end": 251.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 13,
+      "elevator_id": 1
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 251.0,
+      "end": 256.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 13,
+      "elevator_id": 1
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 256.0,
+      "end": 266.0,
+      "floor": 5,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 13,
+      "elevator_id": 1,
+      "dest_floor": 8
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 266.0,
+      "end": 271.0,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 13,
+      "elevator_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 271.0,
+      "end": 291.0,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 13
+    },
+    {
+      "type": "DELIVER",
+      "start": 291.0,
+      "end": 301.0,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 13
+    },
+    {
+      "type": "WALK",
+      "start": 301.0,
+      "end": 321.0,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 321.0,
+      "end": 329.0,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 329.0,
+      "end": 336.0,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 336.0,
+      "end": 341.0,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 341.0,
+      "end": 361.5,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 3
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 361.5,
+      "end": 366.5,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 366.5,
+      "end": 378.5,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 378.5,
+      "end": 388.5,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 3
+    },
+    {
+      "type": "WALK",
+      "start": 388.5,
+      "end": 408.5,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 3
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 408.5,
+      "end": 416.5,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 3,
+      "elevator_id": 1
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 416.5,
+      "end": 423.5,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 3,
+      "elevator_id": 1
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 423.5,
+      "end": 428.5,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 3,
+      "elevator_id": 1
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 428.5,
+      "end": 443.5,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 3,
+      "elevator_id": 1,
+      "dest_floor": 9
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 443.5,
+      "end": 448.5,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 3,
+      "elevator_id": 1
+    },
+    {
+      "type": "WALK",
+      "start": 448.5,
+      "end": 468.5,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 3
+    },
+    {
+      "type": "DELIVER",
+      "start": 468.5,
+      "end": 478.5,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 3
+    },
+    {
+      "type": "WALK",
+      "start": 478.5,
+      "end": 498.5,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 498.5,
+      "end": 506.5,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 506.5,
+      "end": 513.5,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 513.5,
+      "end": 518.5,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 518.5,
+      "end": 531.5,
+      "floor": 9,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 7
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 531.5,
+      "end": 536.5,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 536.5,
+      "end": 548.5,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 548.5,
+      "end": 558.5,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 5
+    },
+    {
+      "type": "WALK",
+      "start": 558.5,
+      "end": 578.5,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 5
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 578.5,
+      "end": 586.5,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 5,
+      "elevator_id": 2
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 586.5,
+      "end": 593.5,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 5,
+      "elevator_id": 2
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 593.5,
+      "end": 598.5,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 5,
+      "elevator_id": 2
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 598.5,
+      "end": 605.17,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 5,
+      "elevator_id": 2,
+      "dest_floor": 8
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 605.17,
+      "end": 610.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 5,
+      "elevator_id": 2
+    },
+    {
+      "type": "WALK",
+      "start": 610.17,
+      "end": 630.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 5
+    },
+    {
+      "type": "DELIVER",
+      "start": 630.17,
+      "end": 640.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 5
+    },
+    {
+      "type": "WALK",
+      "start": 640.17,
+      "end": 660.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 660.17,
+      "end": 668.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 668.17,
+      "end": 675.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 675.17,
+      "end": 680.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 680.17,
+      "end": 690.67,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 7
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 690.67,
+      "end": 695.67,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 695.67,
+      "end": 707.67,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 707.67,
+      "end": 717.67,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 20
+    },
+    {
+      "type": "WALK",
+      "start": 717.67,
+      "end": 729.67,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 20
+    },
+    {
+      "type": "DELIVER",
+      "start": 729.67,
+      "end": 739.67,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 20
+    },
+    {
+      "type": "WALK",
+      "start": 739.67,
+      "end": 759.67,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 759.67,
+      "end": 767.67,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 767.67,
+      "end": 774.67,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 774.67,
+      "end": 779.67,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 779.67,
+      "end": 790.17,
+      "floor": 7,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 8
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 790.17,
+      "end": 795.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 795.17,
+      "end": 807.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 807.17,
+      "end": 817.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 6
+    },
+    {
+      "type": "WALK",
+      "start": 817.17,
+      "end": 829.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 6
+    },
+    {
+      "type": "DELIVER",
+      "start": 829.17,
+      "end": 839.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 6
+    },
+    {
+      "type": "WALK",
+      "start": 839.17,
+      "end": 859.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 859.17,
+      "end": 867.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 867.17,
+      "end": 874.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 874.17,
+      "end": 879.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 879.17,
+      "end": 892.17,
+      "floor": 8,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 10
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 892.17,
+      "end": 897.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 897.17,
+      "end": 909.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 909.17,
+      "end": 919.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 2
+    },
+    {
+      "type": "WALK",
+      "start": 919.17,
+      "end": 939.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 2
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 939.17,
+      "end": 947.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 2,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 947.17,
+      "end": 954.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 2,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 954.17,
+      "end": 959.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 2,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 959.17,
+      "end": 984.67,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 2,
+      "elevator_id": 0,
+      "dest_floor": 3
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 984.67,
+      "end": 989.67,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 2,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 989.67,
+      "end": 1009.67,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 2
+    },
+    {
+      "type": "DELIVER",
+      "start": 1009.67,
+      "end": 1019.67,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 2
+    },
+    {
+      "type": "WALK",
+      "start": 1019.67,
+      "end": 1039.67,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 1039.67,
+      "end": 1047.67,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 1047.67,
+      "end": 1054.67,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 1054.67,
+      "end": 1059.67,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 1059.67,
+      "end": 1085.17,
+      "floor": 3,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 10
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 1085.17,
+      "end": 1090.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 1090.17,
+      "end": 1102.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 1102.17,
+      "end": 1112.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 26
+    },
+    {
+      "type": "WALK",
+      "start": 1112.17,
+      "end": 1124.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 26
+    },
+    {
+      "type": "DELIVER",
+      "start": 1124.17,
+      "end": 1134.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 26
+    },
+    {
+      "type": "WALK",
+      "start": 1134.17,
+      "end": 1154.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 1154.17,
+      "end": 1162.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 1162.17,
+      "end": 1169.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 1169.17,
+      "end": 1174.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 1174.17,
+      "end": 1202.17,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "elevator_id": 0,
+      "dest_floor": 2
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 1202.17,
+      "end": 1207.17,
+      "floor": 2,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "elevator_id": 0
+    },
+    {
+      "type": "WALK",
+      "start": 1207.17,
+      "end": 1219.17,
+      "floor": 2,
+      "robot_id": 9,
+      "needs_gpu": false
+    },
+    {
+      "type": "PICKUP",
+      "start": 1219.17,
+      "end": 1229.17,
+      "floor": 2,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 4
+    },
+    {
+      "type": "WALK",
+      "start": 1229.17,
+      "end": 1249.17,
+      "floor": 2,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 4
+    },
+    {
+      "type": "APPROACH_ELEVATOR",
+      "start": 1249.17,
+      "end": 1257.17,
+      "floor": 2,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 4,
+      "elevator_id": 2
+    },
+    {
+      "type": "PRESS_BUTTON",
+      "start": 1257.17,
+      "end": 1264.17,
+      "floor": 2,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 4,
+      "elevator_id": 2
+    },
+    {
+      "type": "WAIT_ELEVATOR",
+      "start": 1264.17,
+      "end": 1269.17,
+      "floor": 2,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 4,
+      "elevator_id": 2
+    },
+    {
+      "type": "RIDE_ELEVATOR",
+      "start": 1269.17,
+      "end": 1287.5,
+      "floor": 2,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 4,
+      "elevator_id": 2,
+      "dest_floor": 10
+    },
+    {
+      "type": "EXIT_ELEVATOR",
+      "start": 1287.5,
+      "end": 1292.5,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": true,
+      "task_id": 4,
+      "elevator_id": 2
+    },
+    {
+      "type": "WALK",
+      "start": 1292.5,
+      "end": 1312.5,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 4
+    },
+    {
+      "type": "DELIVER",
+      "start": 1312.5,
+      "end": 1322.5,
+      "floor": 10,
+      "robot_id": 9,
+      "needs_gpu": false,
+      "task_id": 4
+    }
+  ]
+}

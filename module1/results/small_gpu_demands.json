@@ -1,0 +1,571 @@
+{
+  "0": [
+    {
+      "type": "demand",
+      "start": 110.0,
+      "end": 125.0,
+      "robot_id": 0,
+      "elevator_id": 1,
+      "floor": 4,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 125.0,
+      "end": 140.0,
+      "duration": 15.0,
+      "robot_id": 0,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 140.0,
+      "end": 145.0,
+      "robot_id": 0,
+      "elevator_id": 1,
+      "floor": 1,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 145.0,
+      "end": 280.0,
+      "duration": 135.0,
+      "robot_id": 0,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 280.0,
+      "end": 295.0,
+      "robot_id": 0,
+      "elevator_id": 0,
+      "floor": 1,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 295.0,
+      "end": 318.0,
+      "duration": 23.0,
+      "robot_id": 0,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 318.0,
+      "end": 323.0,
+      "robot_id": 0,
+      "elevator_id": 0,
+      "floor": 5,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 323.0,
+      "end": 433.0,
+      "duration": 110.0,
+      "robot_id": 0,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 433.0,
+      "end": 448.0,
+      "robot_id": 0,
+      "elevator_id": 1,
+      "floor": 5,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 448.0,
+      "end": 463.0,
+      "duration": 15.0,
+      "robot_id": 0,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 463.0,
+      "end": 468.0,
+      "robot_id": 0,
+      "elevator_id": 1,
+      "floor": 2,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 468.0,
+      "end": 650.5,
+      "duration": 182.5,
+      "robot_id": 0,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 650.5,
+      "end": 665.5,
+      "robot_id": 0,
+      "elevator_id": 1,
+      "floor": 2,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 665.5,
+      "end": 680.5,
+      "duration": 15.0,
+      "robot_id": 0,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 680.5,
+      "end": 685.5,
+      "robot_id": 0,
+      "elevator_id": 1,
+      "floor": 5,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    }
+  ],
+  "1": [],
+  "2": [
+    {
+      "type": "demand",
+      "start": 63.333333333333336,
+      "end": 78.33333333333334,
+      "robot_id": 2,
+      "elevator_id": 1,
+      "floor": 3,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 78.33333333333334,
+      "end": 90.00000000000001,
+      "duration": 11.666666666666671,
+      "robot_id": 2,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 90.00000000000001,
+      "end": 95.00000000000001,
+      "robot_id": 2,
+      "elevator_id": 1,
+      "floor": 4,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 95.00000000000001,
+      "end": 171.66666666666669,
+      "duration": 76.66666666666667,
+      "robot_id": 2,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 171.66666666666669,
+      "end": 186.66666666666669,
+      "robot_id": 2,
+      "elevator_id": 0,
+      "floor": 4,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 186.66666666666669,
+      "end": 202.16666666666669,
+      "duration": 15.5,
+      "robot_id": 2,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 202.16666666666669,
+      "end": 207.16666666666669,
+      "robot_id": 2,
+      "elevator_id": 0,
+      "floor": 3,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 207.16666666666669,
+      "end": 270.5,
+      "duration": 63.333333333333314,
+      "robot_id": 2,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 270.5,
+      "end": 285.5,
+      "robot_id": 2,
+      "elevator_id": 1,
+      "floor": 3,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 285.5,
+      "end": 298.8333333333333,
+      "duration": 13.333333333333314,
+      "robot_id": 2,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 298.8333333333333,
+      "end": 303.8333333333333,
+      "robot_id": 2,
+      "elevator_id": 1,
+      "floor": 5,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    }
+  ],
+  "3": [
+    {
+      "type": "demand",
+      "start": 58.0,
+      "end": 73.0,
+      "robot_id": 3,
+      "elevator_id": 1,
+      "floor": 5,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 73.0,
+      "end": 89.66666666666667,
+      "duration": 16.66666666666667,
+      "robot_id": 3,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 89.66666666666667,
+      "end": 94.66666666666667,
+      "robot_id": 3,
+      "elevator_id": 1,
+      "floor": 1,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 94.66666666666667,
+      "end": 144.66666666666669,
+      "duration": 50.000000000000014,
+      "robot_id": 3,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 144.66666666666669,
+      "end": 159.66666666666669,
+      "robot_id": 3,
+      "elevator_id": 0,
+      "floor": 1,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 159.66666666666669,
+      "end": 182.66666666666669,
+      "duration": 23.0,
+      "robot_id": 3,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 182.66666666666669,
+      "end": 187.66666666666669,
+      "robot_id": 3,
+      "elevator_id": 0,
+      "floor": 5,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 187.66666666666669,
+      "end": 229.66666666666669,
+      "duration": 42.0,
+      "robot_id": 3,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 229.66666666666669,
+      "end": 244.66666666666669,
+      "robot_id": 3,
+      "elevator_id": 1,
+      "floor": 5,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 244.66666666666669,
+      "end": 256.33333333333337,
+      "duration": 11.666666666666686,
+      "robot_id": 3,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 256.33333333333337,
+      "end": 261.33333333333337,
+      "robot_id": 3,
+      "elevator_id": 1,
+      "floor": 4,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 261.33333333333337,
+      "end": 311.33333333333337,
+      "duration": 50.0,
+      "robot_id": 3,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 311.33333333333337,
+      "end": 326.33333333333337,
+      "robot_id": 3,
+      "elevator_id": 0,
+      "floor": 4,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 326.33333333333337,
+      "end": 341.83333333333337,
+      "duration": 15.5,
+      "robot_id": 3,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 341.83333333333337,
+      "end": 346.83333333333337,
+      "robot_id": 3,
+      "elevator_id": 0,
+      "floor": 3,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 346.83333333333337,
+      "end": 410.83333333333337,
+      "duration": 64.0,
+      "robot_id": 3,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 410.83333333333337,
+      "end": 425.83333333333337,
+      "robot_id": 3,
+      "elevator_id": 0,
+      "floor": 3,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 425.83333333333337,
+      "end": 441.33333333333337,
+      "duration": 15.5,
+      "robot_id": 3,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 441.33333333333337,
+      "end": 446.33333333333337,
+      "robot_id": 3,
+      "elevator_id": 0,
+      "floor": 2,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 446.33333333333337,
+      "end": 488.33333333333337,
+      "duration": 42.0,
+      "robot_id": 3,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 488.33333333333337,
+      "end": 503.33333333333337,
+      "robot_id": 3,
+      "elevator_id": 1,
+      "floor": 2,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 503.33333333333337,
+      "end": 516.6666666666667,
+      "duration": 13.333333333333371,
+      "robot_id": 3,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 516.6666666666667,
+      "end": 521.6666666666667,
+      "robot_id": 3,
+      "elevator_id": 1,
+      "floor": 4,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 521.6666666666667,
+      "end": 571.6666666666667,
+      "duration": 50.0,
+      "robot_id": 3,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 571.6666666666667,
+      "end": 586.6666666666667,
+      "robot_id": 3,
+      "elevator_id": 0,
+      "floor": 4,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 586.6666666666667,
+      "end": 607.1666666666667,
+      "duration": 20.5,
+      "robot_id": 3,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 607.1666666666667,
+      "end": 612.1666666666667,
+      "robot_id": 3,
+      "elevator_id": 0,
+      "floor": 1,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 612.1666666666667,
+      "end": 654.1666666666667,
+      "duration": 42.0,
+      "robot_id": 3,
+      "reason": "WALKING"
+    },
+    {
+      "type": "demand",
+      "start": 654.1666666666667,
+      "end": 669.1666666666667,
+      "robot_id": 3,
+      "elevator_id": 1,
+      "floor": 1,
+      "actions": [
+        "APPROACH_ELEVATOR",
+        "PRESS_BUTTON"
+      ]
+    },
+    {
+      "type": "idle",
+      "start": 669.1666666666667,
+      "end": 682.5000000000001,
+      "duration": 13.333333333333371,
+      "robot_id": 3,
+      "reason": "RIDING"
+    },
+    {
+      "type": "demand",
+      "start": 682.5000000000001,
+      "end": 687.5000000000001,
+      "robot_id": 3,
+      "elevator_id": 1,
+      "floor": 3,
+      "actions": [
+        "EXIT_ELEVATOR"
+      ]
+    }
+  ],
+  "4": []
+}

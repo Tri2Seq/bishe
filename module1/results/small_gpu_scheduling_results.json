@@ -1,0 +1,46 @@
+{
+  "FragAware(本文)": {
+    "total_demands": 30,
+    "total_gpu_time": 300.0,
+    "total_wait_delay": 0.0,
+    "avg_wait_delay": 0.0,
+    "cold_starts": 18,
+    "migrations": 0,
+    "migration_time": 0.0,
+    "avg_fragmentation": 0.0,
+    "max_fragmentation": 0.0
+  },
+  "OnDemand(B5)": {
+    "total_demands": 30,
+    "total_gpu_time": 300.0,
+    "total_wait_delay": 0.0,
+    "avg_wait_delay": 0.0,
+    "cold_starts": 30,
+    "migrations": 0,
+    "migration_time": 0.0,
+    "avg_fragmentation": 0.0,
+    "max_fragmentation": 0.0
+  },
+  "Fixed(B6)": {
+    "total_demands": 30,
+    "total_gpu_time": 300.0,
+    "total_wait_delay": 0.0,
+    "avg_wait_delay": 0.0,
+    "cold_starts": 0,
+    "migrations": 0,
+    "migration_time": 0.0,
+    "avg_fragmentation": 0.0,
+    "max_fragmentation": 0.0
+  },
+  "RoundRobin(B7)": {
+    "total_demands": 30,
+    "total_gpu_time": 300.0,
+    "total_wait_delay": 0.0,
+    "avg_wait_delay": 0.0,
+    "cold_starts": 30,
+    "migrations": 0,
+    "migration_time": 0.0,
+    "avg_fragmentation": 0.0,
+    "max_fragmentation": 0.0
+  }
+}
