@@ -184,7 +184,7 @@ class FragAwareScheduler(BaseScheduler):
             for idx, seg in enumerate(segs):
                 events.append((seg.start, 0, "start", robot_id, seg, idx))
                 events.append((seg.end, 1, "end", robot_id, seg, idx))
-        events.sort()
+        events.sort(key=lambda e: (e[0], e[1]))
 
         for t, _, event_type, robot_id, seg, seg_idx in events:
             if event_type == "start":

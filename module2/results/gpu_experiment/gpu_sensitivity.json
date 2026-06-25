@@ -1,0 +1,186 @@
+{
+  "宽松(8GPU)": {
+    "FragAware": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 65,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    },
+    "OnDemand": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 114,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    },
+    "Fixed": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 0,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    },
+    "RoundRobin": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 114,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    }
+  },
+  "适中(4GPU)": {
+    "FragAware": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 65,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    },
+    "OnDemand": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 114,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    },
+    "Fixed": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 0,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    },
+    "RoundRobin": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 114,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    }
+  },
+  "紧张(2GPU)": {
+    "FragAware": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 65,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    },
+    "OnDemand": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 114,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    },
+    "Fixed": {
+      "total_demands": 114,
+      "total_gpu_time": 540.0,
+      "total_wait_delay": 3000220.0,
+      "avg_wait_delay": 26317.72,
+      "cold_starts": 0,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    },
+    "RoundRobin": {
+      "total_demands": 114,
+      "total_gpu_time": 760.0,
+      "total_wait_delay": 0.0,
+      "avg_wait_delay": 0.0,
+      "cold_starts": 114,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.0,
+      "max_fragmentation": 0.0
+    }
+  },
+  "极紧(2GPU-大模型)": {
+    "FragAware": {
+      "total_demands": 114,
+      "total_gpu_time": 678.0,
+      "total_wait_delay": 33.0,
+      "avg_wait_delay": 0.29,
+      "cold_starts": 64,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.3844,
+      "max_fragmentation": 1.0
+    },
+    "OnDemand": {
+      "total_demands": 114,
+      "total_gpu_time": 562.0,
+      "total_wait_delay": 87.0,
+      "avg_wait_delay": 0.76,
+      "cold_starts": 85,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.4803,
+      "max_fragmentation": 1.0
+    },
+    "Fixed": {
+      "total_demands": 114,
+      "total_gpu_time": 100.0,
+      "total_wait_delay": 11000660.0,
+      "avg_wait_delay": 96497.02,
+      "cold_starts": 0,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 1.0,
+      "max_fragmentation": 1.0
+    },
+    "RoundRobin": {
+      "total_demands": 114,
+      "total_gpu_time": 562.0,
+      "total_wait_delay": 87.0,
+      "avg_wait_delay": 0.76,
+      "cold_starts": 85,
+      "migrations": 0,
+      "migration_time": 0.0,
+      "avg_fragmentation": 0.4825,
+      "max_fragmentation": 1.0
+    }
+  }
+}
