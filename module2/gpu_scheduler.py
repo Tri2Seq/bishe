@@ -322,6 +322,100 @@ class FixedScheduler(BaseScheduler):
         return self.metrics
 
 
+class PredictiveScheduler(BaseScheduler):
+    """
+    预测性GPU调度器：利用已知的24小时任务周期性提前预测GPU需求。
+    预加载（高峰前加载模型）+ 智能保持（短间隔+高未来密度）+ 预释放（低谷前释放）
+    """
+
+    def __init__(self, config: GPUConfig,
+                 preload_lead: float = 10.0,
+                 release_threshold: float = 30.0,
+                 prediction_horizon: float = 60.0):
+        super().__init__(config)
+        self.preload_lead = preload_lead
+        self.release_threshold = release_threshold
+        self.prediction_horizon = prediction_horizon
+
+    def schedule(self, all_demands: Dict[int, List[GPUDemand]]) -> SchedulerMetrics:
+        all_events = []
+        robot_demand_segs: Dict[int, List[GPUDemand]] = {}
+        for rid, segs in all_demands.items():
+            d_segs = [s for s in segs if s.demand_type == "demand"]
+            robot_demand_segs[rid] = d_segs
+            for idx, seg in enumerate(d_segs):
+                all_events.append((seg.start, 0, "start", rid, seg, idx))
+                all_events.append((seg.end, 1, "end", rid, seg, idx))
+                preload_time = max(0, seg.start - self.preload_lead)
+                all_events.append((preload_time, -1, "preload", rid, seg, idx))
+        all_events.sort(key=lambda e: (e[0], e[1]))
+
+        next_demand = {}
+        for rid, segs in robot_demand_segs.items():
+            for idx in range(len(segs)):
+                next_demand[(rid, idx)] = segs[idx + 1] if idx + 1 < len(segs) else None
+
+        for t, _, event_type, rid, seg, seg_idx in all_events:
+            if event_type == "preload":
+                if rid in self.robot_gpu_map:
+                    continue
+                gpu_id = self._find_best_gpu()
+                if gpu_id is not None:
+                    self._allocate(rid, gpu_id, t, seg.end, "preloading")
+                self._sample_metrics(t)
+
+            elif event_type == "start":
+                self.metrics.total_demands += 1
+                if rid in self.robot_gpu_map:
+                    self.metrics.total_gpu_time += seg.duration
+                else:
+                    gpu_id = self._find_best_gpu()
+                    if gpu_id is not None:
+                        self._allocate(rid, gpu_id, t, seg.end)
+                        self.metrics.total_gpu_time += seg.duration
+                        self.metrics.total_cold_starts += 1
+                    else:
+                        # 回收空闲
+                        for gpu in self.gpu_states:
+                            for r in list(gpu.active_robots.keys()):
+                                active = any(s.start <= t < s.end
+                                             for s in robot_demand_segs.get(r, []))
+                                if not active:
+                                    self._release(r, gpu.gpu_id)
+                                    self.metrics.total_migrations += 1
+                                    self._allocate(rid, gpu.gpu_id, t, seg.end)
+                                    self.metrics.total_gpu_time += seg.duration
+                                    self.metrics.total_cold_starts += 1
+                                    break
+                            else:
+                                continue
+                            break
+                        else:
+                            self.metrics.total_wait_delay += self.config.cold_start_time
+                self._sample_metrics(t)
+
+            elif event_type == "end":
+                if rid not in self.robot_gpu_map:
+                    continue
+                gpu_id = self.robot_gpu_map[rid]
+                nxt = next_demand.get((rid, seg_idx))
+                should_keep = False
+                if nxt is not None:
+                    gap = nxt.start - seg.end
+                    pressure = sum(len(g.active_robots) for g in self.gpu_states) / max(self.config.total_concurrent, 1)
+                    if gap <= self.release_threshold and pressure < 0.8:
+                        should_keep = True
+                    future = sum(1 for s in robot_demand_segs.get(rid, [])
+                                 if t < s.start < t + self.prediction_horizon)
+                    if future >= 2 and pressure < 0.7:
+                        should_keep = True
+                if not should_keep:
+                    self._release(rid, gpu_id)
+                self._sample_metrics(t)
+
+        return self.metrics
+
+
 class RoundRobinScheduler(BaseScheduler):
     """B7: 轮询分配"""
 
