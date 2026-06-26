@@ -154,6 +154,7 @@ class ProblemAnalyzer:
         冲突强度 ∈ [0, 1]，越高表示越不应该分配给同一机器人或同一时段。
         """
         conflict = np.zeros((self.N, self.N))
+        max_deadline = max(t.deadline for t in self.tasks) if self.tasks else 1
 
         for i in range(self.N):
             for j in range(i + 1, self.N):
@@ -190,7 +191,6 @@ class ProblemAnalyzer:
 
                 # (4) 时间窗竞争
                 deadline_diff = abs(ti.deadline - tj.deadline)
-                max_deadline = max(t.deadline for t in self.tasks)
                 time_proximity = 1.0 - deadline_diff / max(max_deadline, 1)
                 if ti.priority == Priority.URGENT and tj.priority == Priority.URGENT:
                     score += time_proximity * 0.3

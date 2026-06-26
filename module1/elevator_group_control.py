@@ -198,7 +198,9 @@ class ElevatorGroupController:
 
         for car in self.elevators:
             eta = self._estimate_arrival(car, call.floor, call.direction)
-            if eta < best_eta and car.has_capacity:
+            if not car.has_capacity:
+                eta += 1000  # 满载惩罚，但仍可作为后备
+            if eta < best_eta:
                 best_eta = eta
                 best_elev = car.id
 

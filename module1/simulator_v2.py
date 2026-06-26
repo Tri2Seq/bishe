@@ -151,8 +151,9 @@ class SimulatorV2:
         self.gpu_demand_log: List[Dict] = []
 
     def load_schedule(self, assignment: Dict[int, int],
-                      task_sequence: Dict[int, List[int]]):
-        """加载调度方案（仅任务分配和序列，不含电梯选择）"""
+                      task_sequence: Dict[int, List[int]],
+                      elevator_assignment: Dict[int, int] = None):
+        """加载调度方案。elevator_assignment被忽略（V2由群控系统决定）。"""
         for j, seq in task_sequence.items():
             self.robot_states[j].task_queue = list(seq)
 
@@ -348,7 +349,7 @@ class SimulatorV2:
 
         elif rs.phase == RobotPhase.PICKING_UP:
             # 取货完成 → 检查是否有同楼层可批量取的任务
-            if task:
+            if task and rs.current_task not in rs.carrying:
                 rs.carrying.append(rs.current_task)
                 rs.carrying_weight += task.weight
 
@@ -395,15 +396,17 @@ class SimulatorV2:
             self._log_action(rs, "PRESS_BUTTON", needs_gpu=True)
 
         elif rs.phase == RobotPhase.PRESSING_BUTTON:
-            # 错峰呼叫：同楼层已有机器人在等电梯时，延迟呼叫
-            if self.strategy.stagger_delay > 0:
+            # 错峰呼叫：同楼层已有机器人在等电梯时，延迟一次
+            if self.strategy.stagger_delay > 0 and not getattr(rs, '_stagger_applied', False):
                 waiting_here = sum(1 for other in self.robot_states
                                    if other.id != rs.id
                                    and other.floor == rs.floor
                                    and other.phase == RobotPhase.WAITING_ELEVATOR)
                 if waiting_here > 0:
                     rs.phase_remaining = self.strategy.stagger_delay * waiting_here
-                    return  # 延迟后会再次进入_transition
+                    rs._stagger_applied = True
+                    return
+            rs._stagger_applied = False
 
             # 向群控系统注册呼叫 → 等待电梯（事件驱动）
             direction = Direction.UP if rs.target_floor > rs.floor else Direction.DOWN
@@ -546,13 +549,15 @@ class SimulatorV2:
             if call.pickup_time > 0:
                 wait_times.append(call.pickup_time - call.call_time)
 
+        total_energy = robot_energy + egcs_stats['total_energy_kwh'] * 3600
         return {
             "completed_tasks": completed,
             "total_tasks": self.N,
             "makespan": makespan,
+            "energy": total_energy,
             "energy_robot": robot_energy,
             "energy_elevator_kwh": egcs_stats['total_energy_kwh'],
-            "energy_total": robot_energy + egcs_stats['total_energy_kwh'] * 3600,
+            "energy_total": total_energy,
             "weighted_tardiness": weighted_tardiness,
             "avg_elevator_wait": np.mean(wait_times) if wait_times else 0,
             "max_elevator_wait": max(wait_times) if wait_times else 0,

@@ -91,6 +91,10 @@ class NSGA2EBOSolver:
 
         for i in self.critical_tasks:
             feasible = self.analyzer.feasible_robots[i]
+            if not feasible:
+                gene_assign[i] = 0
+                assigned.add(i)
+                continue
             best_j, best_score = feasible[0], float('inf')
             for j in feasible:
                 conflict_sum = sum(

@@ -315,7 +315,10 @@ class EBDCOSolver:
         # 阶段1：按关键度顺序分配关键任务
         for i in self.critical_tasks:
             feasible = self.analyzer.feasible_robots[i]
-            # 选冲突最小+负载最低的机器人
+            if not feasible:
+                gene_assign[i] = 0
+                assigned.add(i)
+                continue
             best_j = None
             best_score = float('inf')
             for j in feasible:

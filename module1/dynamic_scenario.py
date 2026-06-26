@@ -105,21 +105,23 @@ def generate_day_tasks(scenario: DayScenario, seed: int = 42) -> List[Task]:
             arrival_time = hour * 3600  # 转换为秒
 
             # 任务方向
+            all_floors = list(range(1, scenario.num_floors + 1))
             r = rng.random()
             if r < period.up_ratio:
-                # 上行：从低楼层到高楼层
-                origin = rng.choice(scenario.receiving_floors + scenario.storage_floors[:len(scenario.storage_floors)//2])
-                dest = rng.choice(scenario.storage_floors[len(scenario.storage_floors)//2:] + scenario.packing_floors)
+                origin_pool = scenario.receiving_floors + scenario.storage_floors[:len(scenario.storage_floors)//2]
+                dest_pool = scenario.storage_floors[len(scenario.storage_floors)//2:] + scenario.packing_floors
+                origin = rng.choice(origin_pool) if origin_pool else rng.randint(1, scenario.num_floors + 1)
+                dest = rng.choice(dest_pool) if dest_pool else rng.randint(1, scenario.num_floors + 1)
                 if dest <= origin:
                     dest = min(origin + rng.randint(1, 4), scenario.num_floors)
             elif r < period.up_ratio + period.down_ratio:
-                # 下行：从高楼层到低楼层
-                origin = rng.choice(scenario.storage_floors + scenario.packing_floors)
-                dest = rng.choice(scenario.packing_floors + scenario.shipping_floors)
+                origin_pool = scenario.storage_floors + scenario.packing_floors
+                dest_pool = scenario.packing_floors + scenario.shipping_floors
+                origin = rng.choice(origin_pool) if origin_pool else rng.randint(1, scenario.num_floors + 1)
+                dest = rng.choice(dest_pool) if dest_pool else rng.randint(1, scenario.num_floors + 1)
                 if dest >= origin:
                     dest = max(origin - rng.randint(1, 4), 1)
             else:
-                # 同层调拨
                 origin = rng.randint(1, scenario.num_floors + 1)
                 dest = origin
 

@@ -392,6 +392,7 @@ class PredictiveScheduler(BaseScheduler):
                             break
                         else:
                             self.metrics.total_wait_delay += self.config.cold_start_time
+                            self.metrics.total_gpu_time += seg.duration  # 需求存在，只是延迟
                 self._sample_metrics(t)
 
             elif event_type == "end":
