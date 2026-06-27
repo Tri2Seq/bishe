@@ -23,7 +23,7 @@ from collections import defaultdict
 from enum import Enum, auto
 import json
 
-from config import Robot, Elevator, Task, Priority, PRIORITY_WEIGHT, FLOOR_DISTANCE, INTER_STATION_DISTANCE
+from config import Robot, Elevator, Task, Priority, PRIORITY_WEIGHT, FLOOR_DISTANCE, INTER_STATION_DISTANCE, RelayPlan
 from elevator_group_control import (ElevatorGroupController, DispatchAlgorithm,
                                      Direction, HallCall, ElevatorPhase)
 
@@ -41,6 +41,7 @@ class RobotPhase(Enum):
     EXITING_ELEVATOR = auto()       # 需要GPU
     WALKING_TO_DELIVERY = auto()
     DELIVERING = auto()
+    RELAY_DROPOFF = auto()          # 在中继楼层放下货物
 
 
 GPU_PHASES = {RobotPhase.APPROACHING_ELEVATOR, RobotPhase.PRESSING_BUTTON,
@@ -150,12 +151,22 @@ class SimulatorV2:
         # GPU需求跟踪
         self.gpu_demand_log: List[Dict] = []
 
+        # 中继缓冲区：{floor: [(task_id, weight, relay_robot_id), ...]}
+        self.relay_buffer: Dict[int, List] = defaultdict(list)
+        # 中继计划：{task_id: RelayPlan}
+        self.relay_plans: Dict[int, 'RelayPlan'] = {}
+        # 段完成状态：{seg_id: bool}
+        self.seg_completed: Dict[int, bool] = {}
+
     def load_schedule(self, assignment: Dict[int, int],
                       task_sequence: Dict[int, List[int]],
-                      elevator_assignment: Dict[int, int] = None):
-        """加载调度方案。elevator_assignment被忽略（V2由群控系统决定）。"""
+                      elevator_assignment: Dict[int, int] = None,
+                      relay_plans: Dict[int, any] = None):
+        """加载调度方案。relay_plans: {task_id: RelayPlan}"""
         for j, seq in task_sequence.items():
             self.robot_states[j].task_queue = list(seq)
+        if relay_plans:
+            self.relay_plans = dict(relay_plans)
 
     def run(self, max_time: float = 86400.0, verbose: bool = False) -> Dict:
         """
@@ -276,6 +287,22 @@ class SimulatorV2:
         task_id = rs.task_queue[0]
         task = self.tasks[task_id]
 
+        # 中继第二段：检查第一段是否已完成（货物是否在relay_buffer中）
+        plan = self.relay_plans.get(task_id)
+        if plan and plan.robot_2 == rs.id:
+            # 这是中继第二段——检查relay_buffer中有没有货
+            relay_ready = any(item['task_id'] == task_id
+                              for item in self.relay_buffer.get(plan.relay_floor, []))
+            if not relay_ready:
+                rs.phase = RobotPhase.IDLE
+                return  # 第一段还没送到，等
+
+            # 货物已到中继楼层——修改任务的起点为中继楼层
+            # 从buffer中取出
+            buf = self.relay_buffer[plan.relay_floor]
+            self.relay_buffer[plan.relay_floor] = [
+                item for item in buf if item['task_id'] != task_id]
+
         # 动态任务：还没到达 → 保持IDLE，下一步再检查
         if task.earliest_start > self.current_time:
             rs.phase = RobotPhase.IDLE
@@ -283,14 +310,19 @@ class SimulatorV2:
 
         rs.task_queue.pop(0)
         rs.current_task = task_id
-        self.task_start_times[task_id] = self.current_time
-        self._log_action(rs, "START_TASK", details=f"T{task_id}")
+        if task_id not in self.task_start_times:
+            self.task_start_times[task_id] = self.current_time
+        self._log_action(rs, "START_TASK", details=f"T{task_id}" +
+                         (f" (relay seg2)" if plan and plan.robot_2 == rs.id else ""))
 
-        if rs.floor != task.origin_floor:
-            # 不在取货楼层 → 需要乘电梯去
-            self._initiate_elevator_trip(rs, task.origin_floor, "pickup_transfer")
+        # 确定取货楼层：中继第二段从relay_floor取
+        pickup_floor = task.origin_floor
+        if plan and plan.robot_2 == rs.id:
+            pickup_floor = plan.relay_floor
+
+        if rs.floor != pickup_floor:
+            self._initiate_elevator_trip(rs, pickup_floor, "pickup_transfer")
         else:
-            # 已在取货楼层 → 直接走到取货站
             rs.phase = RobotPhase.WALKING_TO_PICKUP
             rs.phase_remaining = INTER_STATION_DISTANCE / rs.robot.speed
 
@@ -306,25 +338,31 @@ class SimulatorV2:
                     remaining_cap -= t.weight
         return batchable
 
+    def _get_delivery_floor(self, task_id: int, robot_id: int) -> int:
+        """获取任务的实际送货楼层（考虑中继）"""
+        plan = self.relay_plans.get(task_id)
+        if plan and plan.robot_1 == robot_id:
+            return plan.relay_floor  # 第一段送到中继楼层
+        return self.tasks[task_id].dest_floor  # 直送或第二段送到终点
+
     def _compute_delivery_route(self, rs: RobotState) -> List[Tuple[int, List[int]]]:
         """
         计算多站送货路线：按方向排序携带货物的目标楼层。
-        Returns: [(floor, [task_ids]), ...] 按行进方向排序
+        考虑中继任务：第一段机器人送到relay_floor而非dest_floor。
         """
         if not rs.carrying:
             return []
         floor_tasks = defaultdict(list)
         has_cross_floor = False
         for tid in rs.carrying:
-            t = self.tasks[tid]
-            floor_tasks[t.dest_floor].append(tid)
-            if t.dest_floor != rs.floor:
+            delivery_floor = self._get_delivery_floor(tid, rs.id)
+            floor_tasks[delivery_floor].append(tid)
+            if delivery_floor != rs.floor:
                 has_cross_floor = True
 
         if not has_cross_floor:
-            return []  # 全是同层任务
+            return []
 
-        # 按距离当前楼层的距离排序（先近后远）
         route = sorted(floor_tasks.items(), key=lambda x: abs(x[0] - rs.floor))
         return route
 
@@ -427,13 +465,54 @@ class SimulatorV2:
             rs.phase_remaining = DELIVER_TIME
             self._log_action(rs, "DELIVER", task_id=rs.current_task)
 
+        elif rs.phase == RobotPhase.RELAY_DROPOFF:
+            # 中继放货完成 → 将任务放入中继缓冲区，通知第二段机器人
+            task_id = rs.current_task
+            plan = self.relay_plans.get(task_id)
+            if plan:
+                self.relay_buffer[rs.floor].append({
+                    'task_id': task_id,
+                    'weight': self.tasks[task_id].weight,
+                    'dest_floor': self.tasks[task_id].dest_floor,
+                    'robot_2': plan.robot_2,
+                })
+                # 将第二段加入robot_2的队列
+                r2 = self.robot_states[plan.robot_2]
+                r2.task_queue.append(task_id)
+                self._log_action(rs, "RELAY_HANDOFF", task_id=task_id,
+                                 details=f"→R{plan.robot_2} at F{rs.floor}")
+            # 从当前机器人的carrying中移除
+            if task_id in rs.carrying:
+                rs.carrying.remove(task_id)
+                rs.carrying_weight -= self.tasks[task_id].weight
+            # 继续下一个任务
+            rs.current_task = -1
+            if rs.carrying:
+                route = self._compute_delivery_route(rs)
+                if route:
+                    self._initiate_elevator_trip(rs, route[0][0], "delivery_next_stop")
+                else:
+                    rs.phase = RobotPhase.IDLE
+            else:
+                self._start_next_task(rs)
+
         elif rs.phase == RobotPhase.DELIVERING:
-            # 送货完成
+            # 送货完成——检查是否是中继任务的中间站
+            task_id = rs.current_task
+            plan = self.relay_plans.get(task_id)
+            if plan and plan.relay_floor == rs.floor:
+                # 这是中继楼层，不是最终目的地 → 放货交接
+                rs.phase = RobotPhase.RELAY_DROPOFF
+                rs.phase_remaining = 5.0
+                self._log_action(rs, "RELAY_DROPOFF", task_id=task_id,
+                                 details=f"relay at F{rs.floor}")
+                return
+
             self._complete_task(rs, rs.current_task)
 
-            # 检查当前楼层是否还有要送的货（多站送货）
+            # 检查当前楼层是否还有要送的货（多站送货，考虑中继）
             same_floor_carry = [tid for tid in rs.carrying
-                                if self.tasks[tid].dest_floor == rs.floor]
+                                if self._get_delivery_floor(tid, rs.id) == rs.floor]
             if same_floor_carry:
                 # 继续送同楼层的货
                 next_tid = same_floor_carry[0]

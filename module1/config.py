@@ -99,6 +99,69 @@ class Task:
 
 
 @dataclass
+class TaskSegment:
+    """中继拆分后的子任务段"""
+    seg_id: int
+    original_task_id: int
+    origin_floor: int
+    dest_floor: int
+    weight: float
+    priority: Priority
+    deadline: float
+    earliest_start: float = 0.0
+    is_first_seg: bool = True
+    predecessor_seg_id: int = -1   # 第二段指向第一段的seg_id
+
+    @property
+    def is_cross_floor(self) -> bool:
+        return self.origin_floor != self.dest_floor
+
+    @property
+    def floor_diff(self) -> int:
+        return abs(self.dest_floor - self.origin_floor)
+
+
+@dataclass
+class RelayPlan:
+    """中继决策"""
+    task_id: int
+    relay_floor: int
+    robot_1: int
+    robot_2: int
+
+
+def split_task(task: Task, relay_floor: int, base_seg_id: int) -> Tuple[TaskSegment, TaskSegment]:
+    """将一个任务在relay_floor处拆成两段
+
+    Returns: (seg1: origin→relay, seg2: relay→dest)
+    """
+    seg1 = TaskSegment(
+        seg_id=base_seg_id,
+        original_task_id=task.id,
+        origin_floor=task.origin_floor,
+        dest_floor=relay_floor,
+        weight=task.weight,
+        priority=task.priority,
+        deadline=task.deadline,
+        earliest_start=task.earliest_start,
+        is_first_seg=True,
+    )
+    seg2 = TaskSegment(
+        seg_id=base_seg_id + 1,
+        original_task_id=task.id,
+        origin_floor=relay_floor,
+        dest_floor=task.dest_floor,
+        weight=task.weight,
+        priority=task.priority,
+        deadline=task.deadline,
+        earliest_start=task.earliest_start,
+        is_first_seg=False,
+        predecessor_seg_id=base_seg_id,
+    )
+    return seg1, seg2
+
+
+@dataclass
 class ScenarioConfig:
     num_floors: int
     num_robots: int
