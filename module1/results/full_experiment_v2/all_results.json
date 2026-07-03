@@ -1,0 +1,384 @@
+{
+  "algorithm_comparison": {
+    "S1_small": {
+      "Greedy": [
+        {
+          "makespan": 1156.5,
+          "energy": 10752.990000000002,
+          "tardiness": 3459.0,
+          "time": 0.058470726013183594
+        },
+        {
+          "makespan": 515.0,
+          "energy": 10796.429999999995,
+          "tardiness": 578.0,
+          "time": 0.006956577301025391
+        },
+        {
+          "makespan": 536.0,
+          "energy": 11382.839999999995,
+          "tardiness": 1065.0,
+          "time": 0.00742340087890625
+        },
+        {
+          "makespan": 494.5,
+          "energy": 9608.200000000003,
+          "tardiness": 319.5,
+          "time": 0.05423116683959961
+        },
+        {
+          "makespan": 551.5,
+          "energy": 9811.350000000002,
+          "tardiness": 498.0,
+          "time": 0.0555872917175293
+        }
+      ],
+      "EBO": [
+        {
+          "makespan": 0,
+          "energy": 1346.76,
+          "tardiness": 0,
+          "time": 95.51894998550415,
+          "pareto_size": 40
+        },
+        {
+          "makespan": 507.0,
+          "energy": 11631.029999999988,
+          "tardiness": 10.0,
+          "time": 14.809094905853271,
+          "pareto_size": 40
+        },
+        {
+          "makespan": 308.5,
+          "energy": 6121.570000000002,
+          "tardiness": 0,
+          "time": 86.02221274375916,
+          "pareto_size": 40
+        },
+        {
+          "makespan": 0,
+          "energy": 1624.6399999999999,
+          "tardiness": 0,
+          "time": 94.85230135917664,
+          "pareto_size": 40
+        },
+        {
+          "makespan": 142.0,
+          "energy": 1488.9099999999999,
+          "tardiness": 0,
+          "time": 87.60207867622375,
+          "pareto_size": 40
+        }
+      ],
+      "EBO+Relay": [
+        {
+          "makespan": 0,
+          "energy": 954.63,
+          "tardiness": 0,
+          "time": 92.12071132659912,
+          "pareto_size": 40,
+          "relay_active": 0,
+          "relay_eligible": 5
+        },
+        {
+          "makespan": 514.0,
+          "energy": 12059.880000000001,
+          "tardiness": 93.0,
+          "time": 15.857181549072266,
+          "pareto_size": 36,
+          "relay_active": 0,
+          "relay_eligible": 11
+        },
+        {
+          "makespan": 229.5,
+          "energy": 3615.970000000001,
+          "tardiness": 0,
+          "time": 86.35849165916443,
+          "pareto_size": 3,
+          "relay_active": 3,
+          "relay_eligible": 7
+        },
+        {
+          "makespan": 0,
+          "energy": 1005.53,
+          "tardiness": 0,
+          "time": 91.04868412017822,
+          "pareto_size": 40,
+          "relay_active": 4,
+          "relay_eligible": 6
+        },
+        {
+          "makespan": 148.0,
+          "energy": 2776.54,
+          "tardiness": 0,
+          "time": 92.02712392807007,
+          "pareto_size": 40,
+          "relay_active": 1,
+          "relay_eligible": 5
+        }
+      ]
+    },
+    "S2_medium": {
+      "Greedy": [
+        {
+          "makespan": 661.0,
+          "energy": 26234.799999999945,
+          "tardiness": 2068.0,
+          "time": 0.014206409454345703
+        },
+        {
+          "makespan": 680.5,
+          "energy": 26190.579999999936,
+          "tardiness": 2144.5,
+          "time": 0.08154010772705078
+        },
+        {
+          "makespan": 650.0,
+          "energy": 26002.859999999935,
+          "tardiness": 1622.0,
+          "time": 0.0798940658569336
+        },
+        {
+          "makespan": 612.0,
+          "energy": 24444.579999999973,
+          "tardiness": 1400.5,
+          "time": 0.08256387710571289
+        },
+        {
+          "makespan": 821.0,
+          "energy": 29239.829999999907,
+          "tardiness": 1331.5,
+          "time": 0.01585245132446289
+        }
+      ],
+      "EBO": [
+        {
+          "makespan": 187.5,
+          "energy": 3889.31,
+          "tardiness": 0,
+          "time": 292.3315393924713,
+          "pareto_size": 60
+        },
+        {
+          "makespan": 214.0,
+          "energy": 6369.0300000000025,
+          "tardiness": 0,
+          "time": 305.5881562232971,
+          "pareto_size": 60
+        },
+        {
+          "makespan": 228.5,
+          "energy": 5766.630000000001,
+          "tardiness": 0,
+          "time": 294.6435239315033,
+          "pareto_size": 23
+        },
+        {
+          "makespan": 252.5,
+          "energy": 6383.08,
+          "tardiness": 0,
+          "time": 298.8929033279419,
+          "pareto_size": 60
+        },
+        {
+          "makespan": 222.0,
+          "energy": 6865.020000000002,
+          "tardiness": 0,
+          "time": 304.5619592666626,
+          "pareto_size": 60
+        }
+      ],
+      "EBO+Relay": [
+        {
+          "makespan": 242.5,
+          "energy": 5477.000000000001,
+          "tardiness": 0,
+          "time": 286.72312474250793,
+          "pareto_size": 6,
+          "relay_active": 2,
+          "relay_eligible": 20
+        },
+        {
+          "makespan": 155.5,
+          "energy": 4147.030000000001,
+          "tardiness": 0,
+          "time": 305.15761518478394,
+          "pareto_size": 30,
+          "relay_active": 3,
+          "relay_eligible": 15
+        },
+        {
+          "makespan": 238.5,
+          "energy": 7225.980000000001,
+          "tardiness": 0,
+          "time": 300.0987513065338,
+          "pareto_size": 60,
+          "relay_active": 4,
+          "relay_eligible": 16
+        },
+        {
+          "makespan": 244.5,
+          "energy": 7209.100000000002,
+          "tardiness": 0,
+          "time": 299.43153858184814,
+          "pareto_size": 2,
+          "relay_active": 3,
+          "relay_eligible": 18
+        },
+        {
+          "makespan": 190.0,
+          "energy": 4012.5600000000013,
+          "tardiness": 0,
+          "time": 302.63266015052795,
+          "pareto_size": 31,
+          "relay_active": 5,
+          "relay_eligible": 17
+        }
+      ]
+    },
+    "S3_large": {
+      "Greedy": [
+        {
+          "makespan": 1040.0,
+          "energy": 40632.5099999999,
+          "tardiness": 12903.0,
+          "time": 0.09973597526550293
+        },
+        {
+          "makespan": 911.0,
+          "energy": 47074.279999999846,
+          "tardiness": 8025.5,
+          "time": 0.023725032806396484
+        },
+        {
+          "makespan": 989.0,
+          "energy": 39176.88999999991,
+          "tardiness": 6572.0,
+          "time": 0.09884858131408691
+        },
+        {
+          "makespan": 952.0,
+          "energy": 47331.68999999986,
+          "tardiness": 8866.0,
+          "time": 0.024929523468017578
+        },
+        {
+          "makespan": 1121.0,
+          "energy": 46821.86999999982,
+          "tardiness": 10199.5,
+          "time": 0.025897502899169922
+        }
+      ],
+      "EBO": [
+        {
+          "makespan": 370.5,
+          "energy": 14811.989999999994,
+          "tardiness": 0,
+          "time": 514.8384323120117,
+          "pareto_size": 60
+        },
+        {
+          "makespan": 436.5,
+          "energy": 18671.549999999985,
+          "tardiness": 0,
+          "time": 502.5449719429016,
+          "pareto_size": 60
+        },
+        {
+          "makespan": 301.5,
+          "energy": 10586.460000000001,
+          "tardiness": 0,
+          "time": 508.0555486679077,
+          "pareto_size": 37
+        },
+        {
+          "makespan": 370.0,
+          "energy": 14850.439999999991,
+          "tardiness": 0,
+          "time": 501.44230794906616,
+          "pareto_size": 60
+        },
+        {
+          "makespan": 233.5,
+          "energy": 6766.060000000003,
+          "tardiness": 0,
+          "time": 496.9204115867615,
+          "pareto_size": 60
+        }
+      ],
+      "EBO+Relay": [
+        {
+          "makespan": 197.5,
+          "energy": 11260.369999999999,
+          "tardiness": 0,
+          "time": 507.4572298526764,
+          "pareto_size": 47,
+          "relay_active": 5,
+          "relay_eligible": 23
+        },
+        {
+          "makespan": 333.0,
+          "energy": 18173.699999999968,
+          "tardiness": 0,
+          "time": 496.9623327255249,
+          "pareto_size": 60,
+          "relay_active": 5,
+          "relay_eligible": 31
+        },
+        {
+          "makespan": 251.5,
+          "energy": 9014.400000000003,
+          "tardiness": 0,
+          "time": 500.2989671230316,
+          "pareto_size": 60,
+          "relay_active": 4,
+          "relay_eligible": 27
+        },
+        {
+          "makespan": 212.0,
+          "energy": 7705.5300000000025,
+          "tardiness": 0,
+          "time": 504.24852299690247,
+          "pareto_size": 60,
+          "relay_active": 10,
+          "relay_eligible": 31
+        },
+        {
+          "makespan": 180.5,
+          "energy": 7009.680000000002,
+          "tardiness": 0,
+          "time": 498.33436369895935,
+          "pareto_size": 11,
+          "relay_active": 5,
+          "relay_eligible": 28
+        }
+      ]
+    }
+  },
+  "dispatch_comparison": {
+    "ETA": {
+      "makespan": 318.0,
+      "energy": 9929.020000000004,
+      "tardiness": 0,
+      "avg_wait": 3.0714285714285716,
+      "relay": 1,
+      "time": 123.04446053504944
+    },
+    "NC": {
+      "makespan": 470.0,
+      "energy": 13414.50000000001,
+      "tardiness": 0,
+      "avg_wait": 5.5,
+      "relay": 3,
+      "time": 127.48844194412231
+    },
+    "SCAN": {
+      "makespan": 353.5,
+      "energy": 9436.500000000004,
+      "tardiness": 0,
+      "avg_wait": 4.264705882352941,
+      "relay": 2,
+      "time": 129.03031301498413
+    }
+  }
+}

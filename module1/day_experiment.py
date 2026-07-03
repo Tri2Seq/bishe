@@ -2,14 +2,14 @@
 
 完整的一天仿真：
   1. 生成24h周期任务流(~300个任务)
-  2. 滚动优化：每个时段用NSGA-II-EBO优化当前任务批次
+  2. 分批用NSGA-II-EBO优化调度(含中继决策)
   3. V2群控仿真执行
   4. 收集GPU需求时间线 → 传给模块2
-  5. 对比派车算法×机器人策略×优化算法
+  5. 对比派车算法 × 优化方法 × GPU调度策略
 
 实验矩阵：
   派车: ETA / NC / SCAN
-  策略: 贪心 / EBO优化
+  优化: Greedy / EBO+Relay
   GPU:  Predictive / FragAware / OnDemand
 """
 
@@ -27,37 +27,41 @@ from dynamic_scenario import DayScenario, generate_day_tasks, generate_day_robot
 from simulator_v2 import SimulatorV2, RobotStrategy
 from elevator_group_control import DispatchAlgorithm
 from baselines import greedy_fcfs
+from ebdco import LowerLevelSolver
 from nsga2_ebo import NSGA2EBOSolver
 from gpu_config import GPUConfig, GPUDemand
 from gpu_scheduler import FragAwareScheduler, OnDemandScheduler, PredictiveScheduler
 
 
-def run_batch_with_ebo(robots, elevators, tasks, dispatch_algo, seed=42):
-    """用NSGA-II-EBO优化一批任务"""
-    solver = NSGA2EBOSolver(robots, elevators, tasks,
-                             pop_size=30, max_gen=30,
-                             dispatch_algorithm=dispatch_algo, seed=seed)
-    result = solver.solve(verbose=False)
-    pf = np.array(result['pareto_front'])
-    best_idx = np.argmin(pf[:, 0])
-    # 需要从solver中提取最优个体的assignment
-    pareto_inds = [ind for ind in solver._tournament.__self__ if ind.rank == 0] if hasattr(solver, '_tournament') else []
-
-    # 简化：重新用最优参数跑一次仿真提取结果
-    # 找Pareto前沿中makespan最小的个体
-    pop = []
-    for _ in range(30):
-        pop.append(solver._init_critical_first())
-    # 直接用贪心+下层优化作为近似
+def run_greedy_schedule(robots, elevators, tasks):
+    """Greedy + 下层序列优化"""
     greedy = greedy_fcfs(robots, elevators, tasks)
-    from ebdco import LowerLevelSolver
     lower = LowerLevelSolver(robots, elevators, tasks)
-    seq = lower.optimize_sequence(greedy['assignment'], {}, weight=np.array([0.7, 0.2, 0.1]))
-    return greedy['assignment'], seq
+    seq = lower.optimize_sequence(greedy['assignment'], {}, weight=np.array([0.5, 0.3, 0.2]))
+    return greedy['assignment'], seq, {}, RobotStrategy()
 
 
-def extract_gpu_demands_from_sim(sim: SimulatorV2):
-    """从V2仿真器提取GPU需求"""
+def run_ebo_schedule(robots, elevators, tasks, dispatch_algo, seed=42):
+    """EBO + 中继优化"""
+    solver = NSGA2EBOSolver(robots, elevators, tasks,
+                             pop_size=30, max_gen=25,
+                             dispatch_algorithm=dispatch_algo, seed=seed)
+    solver.solve(verbose=False)
+    return solver.get_best_schedule(objective_idx=0)
+
+
+def simulate_day(robots, elevators, tasks, assignment, seq, relay_plans,
+                 strategy, dispatch_algo, dt=1.0):
+    """Run V2 simulation for a full day"""
+    sim = SimulatorV2(robots, elevators, tasks,
+                      dispatch_algorithm=dispatch_algo, dt=dt, strategy=strategy)
+    sim.load_schedule(assignment, seq, relay_plans=relay_plans)
+    result = sim.run(max_time=86400)
+    return sim, result
+
+
+def extract_gpu_demands(sim: SimulatorV2):
+    """从V2仿真器提取GPU需求时间线"""
     demands = {}
     for rid, rs in enumerate(sim.robot_states):
         segs = []
@@ -91,55 +95,7 @@ def run_day_experiment(output_dir="results/day_experiment"):
     print(f"  高峰: {pattern['peak_hour']}:00 ({pattern['peak_tasks']}个), "
           f"低谷: {pattern['valley_hour']}:00 ({pattern['valley_tasks']}个)")
 
-    # ===== 实验1: 派车算法对比 (Greedy调度) =====
-    print(f"\n{'='*60}")
-    print("实验1: 派车算法对比")
-    print(f"{'='*60}")
-
-    # 按时段分批处理（每2小时一批）
-    batch_size_hours = 2
-    results_dispatch = {}
-
-    for algo in [DispatchAlgorithm.ETA, DispatchAlgorithm.NC, DispatchAlgorithm.SCAN]:
-        print(f"\n--- {algo.value} ---")
-        t0 = time.time()
-
-        # 收集一天内所有任务（让earliest_start从0开始偏移）
-        day_tasks = []
-        for t in all_tasks:
-            tc = type(t)(id=len(day_tasks), origin_floor=t.origin_floor,
-                         dest_floor=t.dest_floor, weight=t.weight,
-                         priority=t.priority, deadline=t.deadline,
-                         earliest_start=t.earliest_start)
-            day_tasks.append(tc)
-
-        greedy = greedy_fcfs(robots, elevators, day_tasks)
-        sim = SimulatorV2(robots, elevators, day_tasks,
-                          dispatch_algorithm=algo, dt=1.0)
-        sim.load_schedule(greedy['assignment'], greedy['task_sequence'])
-        r = sim.run(max_time=86400)
-        elapsed = time.time() - t0
-
-        results_dispatch[algo.value] = {
-            'completed': r['completed_tasks'],
-            'makespan': r['makespan'],
-            'energy': r['energy'],
-            'tardiness': r['weighted_tardiness'],
-            'avg_wait': r['avg_elevator_wait'],
-            'gpu_time': r['gpu_time'],
-            'time': elapsed,
-        }
-        print(f"  完成: {r['completed_tasks']}/{len(day_tasks)}, "
-              f"Makespan: {r['makespan']:.0f}s ({r['makespan']/3600:.1f}h), "
-              f"AvgWait: {r['avg_elevator_wait']:.1f}s, "
-              f"Energy: {r['energy']:.0f}J")
-
-    # ===== 实验2: GPU调度对比 =====
-    print(f"\n{'='*60}")
-    print("实验2: GPU调度对比 (使用ETA派车结果)")
-    print(f"{'='*60}")
-
-    # 用ETA的仿真结果提取GPU需求
+    # ===== 准备任务列表 =====
     day_tasks = []
     for t in all_tasks:
         tc = type(t)(id=len(day_tasks), origin_floor=t.origin_floor,
@@ -147,13 +103,57 @@ def run_day_experiment(output_dir="results/day_experiment"):
                      priority=t.priority, deadline=t.deadline,
                      earliest_start=t.earliest_start)
         day_tasks.append(tc)
-    greedy = greedy_fcfs(robots, elevators, day_tasks)
-    sim = SimulatorV2(robots, elevators, day_tasks,
-                      dispatch_algorithm=DispatchAlgorithm.ETA, dt=1.0)
-    sim.load_schedule(greedy['assignment'], greedy['task_sequence'])
-    sim.run(max_time=86400)
 
-    gpu_demands = extract_gpu_demands_from_sim(sim)
+    # ===== 实验1: 派车算法×优化方法 对比 =====
+    print(f"\n{'='*60}")
+    print("实验1: 派车算法×优化方法 对比")
+    print(f"{'='*60}")
+
+    results_scheduling = {}
+
+    for algo in [DispatchAlgorithm.ETA, DispatchAlgorithm.NC, DispatchAlgorithm.SCAN]:
+        for opt_name, opt_fn in [
+            ("Greedy", lambda t, a: run_greedy_schedule(robots, elevators, t)),
+            ("EBO+Relay", lambda t, a: run_ebo_schedule(robots, elevators, t, a, seed=42)),
+        ]:
+            key = f"{algo.value}+{opt_name}"
+            print(f"\n--- {key} ---")
+            t0 = time.time()
+            assignment, seq, relay_plans, strategy = opt_fn(day_tasks, algo)
+            opt_time = time.time() - t0
+            sim, r = simulate_day(robots, elevators, day_tasks,
+                                  assignment, seq, relay_plans, strategy, algo)
+            total_time = time.time() - t0
+            results_scheduling[key] = {
+                'completed': r['completed_tasks'],
+                'total': len(day_tasks),
+                'makespan': r['makespan'],
+                'energy': r['energy'],
+                'tardiness': r['weighted_tardiness'],
+                'avg_wait': r['avg_elevator_wait'],
+                'gpu_time': r['gpu_time'],
+                'opt_time': opt_time,
+                'total_time': total_time,
+            }
+            print(f"  完成: {r['completed_tasks']}/{len(day_tasks)}, "
+                  f"Makespan: {r['makespan']:.0f}s ({r['makespan']/3600:.1f}h), "
+                  f"AvgWait: {r['avg_elevator_wait']:.1f}s, "
+                  f"Energy: {r['energy']:.0f}J, "
+                  f"Time: {total_time:.1f}s")
+
+    # ===== 实验2: GPU调度对比 =====
+    print(f"\n{'='*60}")
+    print("实验2: GPU调度对比")
+    print(f"{'='*60}")
+
+    # 用ETA+EBO的仿真提取GPU需求
+    print("  使用 ETA+EBO+Relay 仿真结果提取GPU需求...")
+    assignment, seq, relay_plans, strategy = run_ebo_schedule(
+        robots, elevators, day_tasks, DispatchAlgorithm.ETA, seed=42)
+    sim_for_gpu, _ = simulate_day(robots, elevators, day_tasks,
+                                  assignment, seq, relay_plans, strategy,
+                                  DispatchAlgorithm.ETA)
+    gpu_demands = extract_gpu_demands(sim_for_gpu)
     total_d = sum(1 for segs in gpu_demands.values() for s in segs if s.demand_type == 'demand')
     print(f"  GPU需求段: {total_d}")
 
@@ -180,20 +180,20 @@ def run_day_experiment(output_dir="results/day_experiment"):
                   f"cold={r['cold_starts']}, frag={r['avg_fragmentation']:.3f}")
         results_gpu[cfg_name] = gpu_results
 
-    # ===== 保存结果 =====
+    # ===== 保存 =====
     all_results = {
         "scenario": {
             "floors": scenario.num_floors,
             "robots": scenario.num_robots,
             "elevators": scenario.num_elevators,
             "total_tasks": len(all_tasks),
+            "peak_hour": pattern['peak_hour'],
+            "valley_hour": pattern['valley_hour'],
         },
-        "dispatch_comparison": results_dispatch,
+        "scheduling_comparison": results_scheduling,
         "gpu_comparison": results_gpu,
         "task_pattern": {
             "hourly": pattern['hourly_distribution'],
-            "peak_hour": pattern['peak_hour'],
-            "valley_hour": pattern['valley_hour'],
         },
     }
     with open(os.path.join(output_dir, "day_results.json"), "w") as f:
@@ -204,19 +204,22 @@ def run_day_experiment(output_dir="results/day_experiment"):
     print(f"\n{'='*60}")
     print("24小时实验汇总")
     print(f"{'='*60}")
-    print(f"\n派车算法对比:")
-    print(f"{'算法':<8} {'完成':>6} {'Makespan':>12} {'能耗':>10} {'AvgWait':>8}")
-    print("-" * 50)
-    for algo, r in results_dispatch.items():
-        print(f"{algo:<8} {r['completed']:>6} {r['makespan']:>12.0f} {r['energy']:>10.0f} {r['avg_wait']:>8.1f}")
+
+    print(f"\n调度对比:")
+    print(f"{'组合':<18} {'完成':>6} {'Makespan':>10} {'能耗':>10} {'AvgWait':>8} {'时间(s)':>8}")
+    print("-" * 64)
+    for key, r in results_scheduling.items():
+        print(f"{key:<18} {r['completed']:>6} {r['makespan']:>10.0f} "
+              f"{r['energy']:>10.0f} {r['avg_wait']:>8.1f} {r['total_time']:>8.1f}")
 
     print(f"\nGPU调度对比 (紧张配置):")
-    tight_name = [k for k in results_gpu if "紧张" in k][0] if any("紧张" in k for k in results_gpu) else list(results_gpu.keys())[-1]
-    tight = results_gpu[tight_name]
-    print(f"{'策略':<12} {'等待(s)':>10} {'冷启动':>8} {'碎片率':>8}")
-    print("-" * 42)
-    for name, r in tight.items():
-        print(f"{name:<12} {r['total_wait_delay']:>10.0f} {r['cold_starts']:>8} {r['avg_fragmentation']:>8.3f}")
+    tight_name = [k for k in results_gpu if "紧张" in k]
+    if tight_name:
+        tight = results_gpu[tight_name[0]]
+        print(f"{'策略':<12} {'等待(s)':>10} {'冷启动':>8} {'碎片率':>8}")
+        print("-" * 42)
+        for name, r in tight.items():
+            print(f"{name:<12} {r['total_wait_delay']:>10.0f} {r['cold_starts']:>8} {r['avg_fragmentation']:>8.3f}")
 
     return all_results
 

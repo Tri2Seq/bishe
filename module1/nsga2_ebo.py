@@ -6,6 +6,7 @@ v2改进（相比v1）：
   3. 新增gene_stagger — 每台机器人的错峰延迟参数
   4. 下层优化器增加批量取货感知
   5. 能耗包含电梯群控系统的能耗
+  6. 中继决策变量 gene_relay + gene_relay_robot：长途任务可拆分为两段由不同机器人协作完成
 """
 
 import numpy as np
@@ -14,7 +15,7 @@ from dataclasses import dataclass, field
 import time
 
 from config import (Robot, Elevator, Task, Priority, PRIORITY_WEIGHT,
-                    FLOOR_DISTANCE, INTER_STATION_DISTANCE)
+                    FLOOR_DISTANCE, INTER_STATION_DISTANCE, RelayPlan)
 from problem_analysis import ProblemAnalyzer
 from ebdco import LowerLevelSolver
 from simulator_v2 import SimulatorV2, RobotStrategy
@@ -23,8 +24,10 @@ from elevator_group_control import DispatchAlgorithm
 
 @dataclass
 class EBOIndividual:
-    gene_assign: np.ndarray     # (N,): task → robot
-    gene_stagger: float = 0.0   # 全局错峰延迟参数
+    gene_assign: np.ndarray          # (N,): task → robot
+    gene_relay: np.ndarray           # (N,): relay floor, -1 = no relay
+    gene_relay_robot: np.ndarray     # (N,): second segment robot, -1 = no relay
+    gene_stagger: float = 0.0
     objectives: np.ndarray = field(default_factory=lambda: np.array([np.inf, np.inf, np.inf]))
     rank: int = 0
     crowding_dist: float = 0.0
@@ -32,6 +35,8 @@ class EBOIndividual:
     def copy(self):
         return EBOIndividual(
             gene_assign=self.gene_assign.copy(),
+            gene_relay=self.gene_relay.copy(),
+            gene_relay_robot=self.gene_relay_robot.copy(),
             gene_stagger=self.gene_stagger,
         )
 
@@ -65,11 +70,19 @@ class NSGA2EBOSolver:
         self.lower_solver = LowerLevelSolver(robots, elevators, tasks)
         self.cf_ids = set(i for i, t in enumerate(tasks) if t.is_cross_floor)
 
+        # 中继候选：跨楼层且楼层差≥3（至少有一个有效中继楼层）
+        self.relay_eligible = [i for i in range(self.N)
+                               if tasks[i].is_cross_floor and tasks[i].floor_diff >= 3]
+
         self.eval_count = 0
         self.gen_history = []
 
+    def _make_relay_genes(self):
+        return np.full(self.N, -1, dtype=int), np.full(self.N, -1, dtype=int)
+
     def _init_critical_first(self) -> EBOIndividual:
         gene_assign = np.zeros(self.N, dtype=int)
+        gene_relay, gene_relay_robot = self._make_relay_genes()
         robot_load = np.zeros(self.M)
         assigned = set()
         for i in self.critical_tasks:
@@ -88,10 +101,13 @@ class NSGA2EBOSolver:
             robot_load[best_j] += 1
             assigned.add(i)
         return EBOIndividual(gene_assign=gene_assign,
+                             gene_relay=gene_relay,
+                             gene_relay_robot=gene_relay_robot,
                              gene_stagger=self.rng.uniform(0, 5))
 
     def _init_floor_cluster(self) -> EBOIndividual:
         gene_assign = np.zeros(self.N, dtype=int)
+        gene_relay, gene_relay_robot = self._make_relay_genes()
         floor_tasks = {}
         for i in range(self.N):
             floor_tasks.setdefault(self.tasks[i].origin_floor, []).append(i)
@@ -108,22 +124,61 @@ class NSGA2EBOSolver:
                         break
             robot_idx = (robot_idx + 1) % self.M
         return EBOIndividual(gene_assign=gene_assign,
+                             gene_relay=gene_relay,
+                             gene_relay_robot=gene_relay_robot,
                              gene_stagger=self.rng.uniform(0, 5))
 
     def _init_random(self) -> EBOIndividual:
         gene_assign = np.zeros(self.N, dtype=int)
+        gene_relay, gene_relay_robot = self._make_relay_genes()
         for i in range(self.N):
             feasible = self.analyzer.feasible_robots[i]
             if feasible:
                 gene_assign[i] = feasible[self.rng.randint(len(feasible))]
+        # ~20% 中继候选启用中继
+        for i in self.relay_eligible:
+            if self.rng.random() < 0.2:
+                self._enable_relay(gene_assign, gene_relay, gene_relay_robot, i)
         return EBOIndividual(gene_assign=gene_assign,
+                             gene_relay=gene_relay,
+                             gene_relay_robot=gene_relay_robot,
                              gene_stagger=self.rng.uniform(0, 10))
 
-    def _evaluate(self, ind: EBOIndividual):
-        """下层结构优化 → V2群控仿真"""
-        assignment = {i: int(ind.gene_assign[i]) for i in range(self.N)}
+    def _enable_relay(self, gene_assign, gene_relay, gene_relay_robot, i):
+        """为任务i启用中继，成功返回True"""
+        t = self.tasks[i]
+        lo = min(t.origin_floor, t.dest_floor) + 1
+        hi = max(t.origin_floor, t.dest_floor)
+        if hi <= lo:
+            return False
+        gene_relay[i] = self.rng.randint(lo, hi)
+        r1 = int(gene_assign[i])
+        feasible_r2 = [j for j in self.analyzer.feasible_robots[i] if j != r1]
+        if feasible_r2:
+            gene_relay_robot[i] = feasible_r2[self.rng.randint(len(feasible_r2))]
+            return True
+        gene_relay[i] = -1
+        return False
 
-        # 下层优化：多策略序列，取快速估算最优的
+    def _build_relay_plans(self, ind: EBOIndividual) -> Dict[int, RelayPlan]:
+        plans = {}
+        for i in range(self.N):
+            rf = int(ind.gene_relay[i])
+            rr = int(ind.gene_relay_robot[i])
+            if rf > 0 and rr >= 0:
+                plans[i] = RelayPlan(
+                    task_id=i,
+                    relay_floor=rf,
+                    robot_1=int(ind.gene_assign[i]),
+                    robot_2=rr,
+                )
+        return plans
+
+    def _evaluate(self, ind: EBOIndividual):
+        """下层结构优化 → V2群控仿真（含中继）"""
+        assignment = {i: int(ind.gene_assign[i]) for i in range(self.N)}
+        relay_plans = self._build_relay_plans(ind)
+
         best_seq, best_cost = None, np.inf
         for w in [np.array([0.7, 0.2, 0.1]),
                   np.array([0.2, 0.6, 0.2]),
@@ -134,12 +189,11 @@ class NSGA2EBOSolver:
                 best_cost = cost
                 best_seq = seq
 
-        # V2仿真（群控系统决定电梯）
         strategy = RobotStrategy(stagger_delay=ind.gene_stagger)
         sim = SimulatorV2(self.robots, self.elevators, self.tasks,
                           dispatch_algorithm=self.dispatch_algorithm,
                           dt=0.5, strategy=strategy)
-        sim.load_schedule(assignment, best_seq)
+        sim.load_schedule(assignment, best_seq, relay_plans=relay_plans)
         result = sim.run(max_time=10000)
 
         ind.objectives = np.array([
@@ -176,14 +230,21 @@ class NSGA2EBOSolver:
             if self.criticality[i] > 0.35:
                 if np.sum(p2.objectives) < np.sum(p1.objectives):
                     c1.gene_assign[i] = p2.gene_assign[i]
+                    c1.gene_relay[i] = p2.gene_relay[i]
+                    c1.gene_relay_robot[i] = p2.gene_relay_robot[i]
                 if np.sum(p1.objectives) < np.sum(p2.objectives):
                     c2.gene_assign[i] = p1.gene_assign[i]
+                    c2.gene_relay[i] = p1.gene_relay[i]
+                    c2.gene_relay_robot[i] = p1.gene_relay_robot[i]
             else:
                 if self.rng.random() < 0.5:
                     c1.gene_assign[i] = p2.gene_assign[i]
+                    c1.gene_relay[i] = p2.gene_relay[i]
+                    c1.gene_relay_robot[i] = p2.gene_relay_robot[i]
                 if self.rng.random() < 0.5:
                     c2.gene_assign[i] = p1.gene_assign[i]
-        # 策略参数混合
+                    c2.gene_relay[i] = p1.gene_relay[i]
+                    c2.gene_relay_robot[i] = p1.gene_relay_robot[i]
         alpha = self.rng.random()
         c1.gene_stagger = alpha * p1.gene_stagger + (1 - alpha) * p2.gene_stagger
         c2.gene_stagger = (1 - alpha) * p1.gene_stagger + alpha * p2.gene_stagger
@@ -194,14 +255,16 @@ class NSGA2EBOSolver:
     def _mutate(self, ind: EBOIndividual):
         if self.rng.random() > self.mutation_rate:
             return
-        strategy = self.rng.randint(4)
+        strategy = self.rng.randint(6)
         if strategy == 0:
+            # 关键任务重分配
             critical = self.critical_tasks[:max(5, self.N // 5)]
             i = critical[self.rng.randint(len(critical))]
             feasible = self.analyzer.feasible_robots[i]
             if feasible:
                 ind.gene_assign[i] = feasible[self.rng.randint(len(feasible))]
         elif strategy == 1:
+            # 负载均衡
             load = np.bincount(ind.gene_assign, minlength=self.M)
             busiest, lightest = int(np.argmax(load)), int(np.argmin(load))
             movable = [i for i in range(self.N)
@@ -210,12 +273,40 @@ class NSGA2EBOSolver:
             if movable:
                 ind.gene_assign[movable[self.rng.randint(len(movable))]] = lightest
         elif strategy == 2:
+            # 错峰延迟调整
             ind.gene_stagger = np.clip(ind.gene_stagger + self.rng.normal(0, 2), 0, 15)
-        else:
+        elif strategy == 3:
+            # 随机重分配
             i = self.rng.randint(self.N)
             feasible = self.analyzer.feasible_robots[i]
             if feasible:
                 ind.gene_assign[i] = feasible[self.rng.randint(len(feasible))]
+        elif strategy == 4:
+            # 中继开关
+            if self.relay_eligible:
+                i = self.relay_eligible[self.rng.randint(len(self.relay_eligible))]
+                if int(ind.gene_relay[i]) > 0:
+                    ind.gene_relay[i] = -1
+                    ind.gene_relay_robot[i] = -1
+                else:
+                    self._enable_relay(ind.gene_assign, ind.gene_relay,
+                                       ind.gene_relay_robot, i)
+        elif strategy == 5:
+            # 中继参数微调（楼层或机器人）
+            active = [i for i in self.relay_eligible if int(ind.gene_relay[i]) > 0]
+            if active:
+                i = active[self.rng.randint(len(active))]
+                if self.rng.random() < 0.5:
+                    t = self.tasks[i]
+                    lo = min(t.origin_floor, t.dest_floor) + 1
+                    hi = max(t.origin_floor, t.dest_floor)
+                    if hi > lo:
+                        ind.gene_relay[i] = self.rng.randint(lo, hi)
+                else:
+                    r1 = int(ind.gene_assign[i])
+                    feasible_r2 = [j for j in self.analyzer.feasible_robots[i] if j != r1]
+                    if feasible_r2:
+                        ind.gene_relay_robot[i] = feasible_r2[self.rng.randint(len(feasible_r2))]
 
     def _repair(self, ind: EBOIndividual):
         for i in range(self.N):
@@ -223,6 +314,33 @@ class NSGA2EBOSolver:
             feasible = self.analyzer.feasible_robots[i]
             if feasible and j not in feasible:
                 ind.gene_assign[i] = feasible[0]
+        # 中继合法性修复
+        for i in range(self.N):
+            rf = int(ind.gene_relay[i])
+            if rf <= 0:
+                ind.gene_relay[i] = -1
+                ind.gene_relay_robot[i] = -1
+                continue
+            t = self.tasks[i]
+            if not t.is_cross_floor or t.floor_diff < 3:
+                ind.gene_relay[i] = -1
+                ind.gene_relay_robot[i] = -1
+                continue
+            lo = min(t.origin_floor, t.dest_floor) + 1
+            hi = max(t.origin_floor, t.dest_floor)
+            if rf < lo or rf >= hi:
+                ind.gene_relay[i] = -1
+                ind.gene_relay_robot[i] = -1
+                continue
+            r1 = int(ind.gene_assign[i])
+            rr = int(ind.gene_relay_robot[i])
+            if rr == r1 or rr < 0 or rr >= self.M or rr not in self.analyzer.feasible_robots[i]:
+                feasible_r2 = [j for j in self.analyzer.feasible_robots[i] if j != r1]
+                if feasible_r2:
+                    ind.gene_relay_robot[i] = feasible_r2[0]
+                else:
+                    ind.gene_relay[i] = -1
+                    ind.gene_relay_robot[i] = -1
 
     def _fast_nondominated_sort(self, pop):
         n = len(pop)
@@ -294,6 +412,7 @@ class NSGA2EBOSolver:
             print(f"NSGA-II-EBO v2: pop={self.pop_size}, gen={self.max_gen}, "
                   f"N={self.N}, M={self.M}, E={self.E}, dispatch={self.dispatch_algorithm.value}")
             print(f"  电梯瓶颈下界: {lb:.0f}s, 关键任务: {len(self.critical_tasks[:max(5,self.N//5)])}")
+            print(f"  中继候选任务: {len(self.relay_eligible)}/{self.N}")
 
         for gen in range(self.max_gen):
             offspring = []
@@ -336,13 +455,20 @@ class NSGA2EBOSolver:
 
             if verbose and (gen % 20 == 0 or gen == self.max_gen - 1):
                 elapsed = time.time() - t_start
+                relay_count = sum(1 for ind in pareto
+                                  for i in range(self.N) if int(ind.gene_relay[i]) > 0) // max(len(pareto), 1)
                 print(f"  Gen {gen:>3d}: Pareto={len(pareto):>3d}, "
                       f"best=[{best_ms:.0f}, {best_en:.0f}, {best_td:.0f}], "
-                      f"evals={self.eval_count}, {elapsed:.1f}s")
+                      f"relay~{relay_count}, evals={self.eval_count}, {elapsed:.1f}s")
 
         total_time = time.time() - t_start
         pareto = [ind for ind in pop if ind.rank == 0]
+        self.final_pareto = pareto
         pf = np.array([ind.objectives for ind in pareto])
+
+        # 最优解的中继统计
+        best_ms_ind = pareto[int(np.argmin(pf[:, 0]))]
+        relay_tasks_best = [i for i in range(self.N) if int(best_ms_ind.gene_relay[i]) > 0]
 
         result = {
             "pareto_front": pf.tolist(),
@@ -353,6 +479,8 @@ class NSGA2EBOSolver:
             "total_evals": self.eval_count,
             "total_time": total_time,
             "gen_history": self.gen_history,
+            "relay_eligible": len(self.relay_eligible),
+            "relay_active_best": len(relay_tasks_best),
         }
 
         if verbose:
@@ -360,5 +488,30 @@ class NSGA2EBOSolver:
             print(f"\nNSGA-II-EBO v2 完成: {total_time:.1f}s, {self.eval_count} evals")
             print(f"Pareto: {len(pareto)}, best=[{pf[:,0].min():.0f}, {pf[:,1].min():.0f}, {pf[:,2].min():.0f}]")
             print(f"Makespan vs 下界: {pf[:,0].min():.0f} vs {lb:.0f} (gap={(pf[:,0].min()-lb)/lb*100:.1f}%)")
+            print(f"中继: {len(relay_tasks_best)}/{len(self.relay_eligible)} eligible 任务启用中继")
+            if relay_tasks_best:
+                for i in relay_tasks_best:
+                    t = self.tasks[i]
+                    rf = int(best_ms_ind.gene_relay[i])
+                    r1 = int(best_ms_ind.gene_assign[i])
+                    r2 = int(best_ms_ind.gene_relay_robot[i])
+                    print(f"    T{i}: F{t.origin_floor}→F{rf}(R{r1})→F{t.dest_floor}(R{r2})")
 
         return result
+
+    def get_best_schedule(self, objective_idx=0):
+        """提取最优个体的调度方案"""
+        best_ind = min(self.final_pareto, key=lambda ind: ind.objectives[objective_idx])
+        assignment = {i: int(best_ind.gene_assign[i]) for i in range(self.N)}
+        relay_plans = self._build_relay_plans(best_ind)
+        best_seq, best_cost = None, np.inf
+        for w in [np.array([0.7, 0.2, 0.1]),
+                  np.array([0.2, 0.6, 0.2]),
+                  np.array([0.1, 0.2, 0.7])]:
+            seq = self.lower_solver.optimize_sequence(assignment, {}, weight=w)
+            cost = self._quick_estimate(assignment, seq)
+            if cost < best_cost:
+                best_cost = cost
+                best_seq = seq
+        strategy = RobotStrategy(stagger_delay=best_ind.gene_stagger)
+        return assignment, best_seq, relay_plans, strategy

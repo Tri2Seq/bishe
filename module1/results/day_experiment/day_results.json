@@ -3,41 +3,82 @@
     "floors": 15,
     "robots": 20,
     "elevators": 4,
-    "total_tasks": 319
+    "total_tasks": 319,
+    "peak_hour": 13,
+    "valley_hour": 12
   },
-  "dispatch_comparison": {
-    "ETA": {
-      "completed": 270,
-      "makespan": 84941.0,
-      "energy": 266868.2000000007,
-      "tardiness": 7692342.721348482,
-      "avg_wait": 9.604368932038835,
-      "gpu_time": 8225.0,
-      "time": 0.7938938140869141
+  "scheduling_comparison": {
+    "ETA+Greedy": {
+      "completed": 257,
+      "total": 319,
+      "makespan": 85269.0,
+      "energy": 234369.12000000017,
+      "tardiness": 7858806.379910529,
+      "avg_wait": 8.975,
+      "gpu_time": 7185.0,
+      "opt_time": 0.056792259216308594,
+      "total_time": 0.9733445644378662
     },
-    "NC": {
-      "completed": 238,
-      "makespan": 84941.0,
-      "energy": 224526.76000000053,
-      "tardiness": 4302379.035553323,
-      "avg_wait": 9.851239669421487,
-      "gpu_time": 7245.0,
-      "time": 0.7716445922851562
+    "ETA+EBO+Relay": {
+      "completed": 279,
+      "total": 319,
+      "makespan": 85852.0,
+      "energy": 216507.76000000018,
+      "tardiness": 21839306.820607424,
+      "avg_wait": 7.536443148688047,
+      "gpu_time": 6849.0,
+      "opt_time": 207.79490971565247,
+      "total_time": 208.6649091243744
     },
-    "SCAN": {
-      "completed": 238,
-      "makespan": 84941.0,
-      "energy": 226686.04000000056,
-      "tardiness": 4569692.085116226,
-      "avg_wait": 10.37190082644628,
-      "gpu_time": 7245.0,
-      "time": 0.7776939868927002
+    "NC+Greedy": {
+      "completed": 236,
+      "total": 319,
+      "makespan": 85269.0,
+      "energy": 211156.42000000022,
+      "tardiness": 6642914.175748009,
+      "avg_wait": 8.133928571428571,
+      "gpu_time": 6705.0,
+      "opt_time": 0.05235171318054199,
+      "total_time": 0.9330244064331055
+    },
+    "NC+EBO+Relay": {
+      "completed": 299,
+      "total": 319,
+      "makespan": 85852.0,
+      "energy": 231148.32000000036,
+      "tardiness": 23284108.240410663,
+      "avg_wait": 8.024390243902438,
+      "gpu_time": 7369.0,
+      "opt_time": 209.20354580879211,
+      "total_time": 210.0743591785431
+    },
+    "SCAN+Greedy": {
+      "completed": 236,
+      "total": 319,
+      "makespan": 85269.0,
+      "energy": 211156.42000000022,
+      "tardiness": 6642914.175748009,
+      "avg_wait": 8.133928571428571,
+      "gpu_time": 6705.0,
+      "opt_time": 0.056585073471069336,
+      "total_time": 0.9315474033355713
+    },
+    "SCAN+EBO+Relay": {
+      "completed": 300,
+      "total": 319,
+      "makespan": 85852.0,
+      "energy": 234949.76000000036,
+      "tardiness": 23663965.10157537,
+      "avg_wait": 8.442048517520215,
+      "gpu_time": 7407.0,
+      "opt_time": 207.7058916091919,
+      "total_time": 208.6509838104248
     }
   },
   "gpu_comparison": {
     "宽松(4GPU/24并发)": {
       "Predictive": {
-        "total_demands": 1233,
+        "total_demands": 1026,
         "total_gpu_time": 0.0,
         "total_wait_delay": 0.0,
         "avg_wait_delay": 0.0,
@@ -48,22 +89,22 @@
         "max_fragmentation": 0.0
       },
       "FragAware": {
-        "total_demands": 1233,
+        "total_demands": 1026,
         "total_gpu_time": 0.0,
         "total_wait_delay": 0.0,
         "avg_wait_delay": 0.0,
-        "cold_starts": 821,
+        "cold_starts": 683,
         "migrations": 0,
         "migration_time": 0.0,
         "avg_fragmentation": 0.0,
         "max_fragmentation": 0.0
       },
       "OnDemand": {
-        "total_demands": 1233,
+        "total_demands": 1026,
         "total_gpu_time": 0.0,
         "total_wait_delay": 0.0,
         "avg_wait_delay": 0.0,
-        "cold_starts": 1233,
+        "cold_starts": 1026,
         "migrations": 0,
         "migration_time": 0.0,
         "avg_fragmentation": 0.0,
@@ -72,36 +113,36 @@
     },
     "紧张(2GPU/4并发)": {
       "Predictive": {
-        "total_demands": 1233,
+        "total_demands": 1026,
         "total_gpu_time": 0.0,
         "total_wait_delay": 0.0,
         "avg_wait_delay": 0.0,
-        "cold_starts": 18,
-        "migrations": 4,
+        "cold_starts": 0,
+        "migrations": 0,
         "migration_time": 0.0,
-        "avg_fragmentation": 0.1024,
+        "avg_fragmentation": 0.026,
         "max_fragmentation": 1.0
       },
       "FragAware": {
-        "total_demands": 1233,
+        "total_demands": 1026,
         "total_gpu_time": 0.0,
         "total_wait_delay": 0.0,
         "avg_wait_delay": 0.0,
-        "cold_starts": 821,
+        "cold_starts": 683,
         "migrations": 0,
         "migration_time": 0.0,
-        "avg_fragmentation": 0.0087,
+        "avg_fragmentation": 0.0019,
         "max_fragmentation": 0.5
       },
       "OnDemand": {
-        "total_demands": 1233,
+        "total_demands": 1026,
         "total_gpu_time": 0.0,
-        "total_wait_delay": 2688.0,
-        "avg_wait_delay": 2.18,
-        "cold_starts": 337,
+        "total_wait_delay": 2394.0,
+        "avg_wait_delay": 2.33,
+        "cold_starts": 228,
         "migrations": 0,
         "migration_time": 0.0,
-        "avg_fragmentation": 0.9217,
+        "avg_fragmentation": 0.9369,
         "max_fragmentation": 1.0
       }
     }
@@ -132,8 +173,6 @@
       1.0,
       2.0,
       2.0
-    ],
-    "peak_hour": 13,
-    "valley_hour": 12
+    ]
   }
 }
