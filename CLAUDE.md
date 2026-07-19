@@ -60,6 +60,11 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+## 5. Language
+
+- Communicate with the user in Chinese.
+- All internal thinking, code comments, commit messages, and working notes must be in English.
+
 ---
 ## Download Or Output
 Current Disk Space is very limited, please save large models or datasets or other large files into ~/zhixingyuan/develop/sjx/ (mkdir if necessary, and softlink) 

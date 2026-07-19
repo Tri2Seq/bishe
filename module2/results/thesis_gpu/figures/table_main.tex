@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\centering
+\caption{Main comparison results (50 servers $\times$ 8 GPUs, 10 seeds)}
+\label{tab:gpu_main}
+\begin{tabular}{llrrrr}
+\toprule
+Dist. & Metric & FragMig (Ours) & Best Fit (BF) & Server Consolidation (SC) & Inaccurate Prediction \\
+\midrule
+Inverse & $\bar{w}$ (h) & 0.00$\pm$0.00 & 0.00$\pm$0.00 & 0.00$\pm$0.00 & 0.00$\pm$0.01 \\
+ & $\bar{Q}$ (GPU$\cdot$h) & 0.01$\pm$0.02 & 0.01$\pm$0.03 & 0.01$\pm$0.01 & 0.01$\pm$0.04 \\
+ & $U$ (\%) & 62.19$\pm$3.23 & 62.19$\pm$3.23 & 62.19$\pm$3.23 & 62.19$\pm$3.23 \\
+ & Makespan (h) & 118.09$\pm$0.54 & 118.09$\pm$0.54 & 118.09$\pm$0.54 & 118.09$\pm$0.54 \\
+ & Migrations & 112$\pm$28 & 0$\pm$0 & 4541$\pm$197 & 111$\pm$22 \\
+\midrule
+Normal & $\bar{w}$ (h) & 3.55$\pm$1.10 & 3.96$\pm$1.11 & 3.67$\pm$1.04 & 3.50$\pm$1.05 \\
+ & $\bar{Q}$ (GPU$\cdot$h) & 20.89$\pm$6.77 & 23.11$\pm$6.76 & 22.08$\pm$6.68 & 21.00$\pm$6.79 \\
+ & $U$ (\%) & 86.59$\pm$1.53 & 85.91$\pm$1.10 & 86.13$\pm$1.13 & 86.46$\pm$1.16 \\
+ & Makespan (h) & 130.16$\pm$4.02 & 130.53$\pm$4.52 & 130.19$\pm$4.48 & 130.52$\pm$4.39 \\
+ & Migrations & 69$\pm$21 & 0$\pm$0 & 1378$\pm$287 & 59$\pm$21 \\
+\midrule
+Direct & $\bar{w}$ (h) & 22.34$\pm$2.67 & 22.61$\pm$2.86 & 22.26$\pm$2.64 & 22.24$\pm$2.83 \\
+ & $\bar{Q}$ (GPU$\cdot$h) & 153.41$\pm$19.09 & 155.65$\pm$19.26 & 153.69$\pm$19.04 & 153.50$\pm$19.26 \\
+ & $U$ (\%) & 88.91$\pm$0.73 & 88.70$\pm$0.72 & 88.78$\pm$0.88 & 88.78$\pm$0.91 \\
+ & Makespan (h) & 176.22$\pm$6.83 & 176.73$\pm$6.90 & 176.21$\pm$6.92 & 176.11$\pm$6.97 \\
+ & Migrations & 22$\pm$7 & 0$\pm$0 & 598$\pm$109 & 23$\pm$6 \\
+\bottomrule
+\end{tabular}
+\end{table}

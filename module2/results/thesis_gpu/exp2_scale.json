@@ -1,0 +1,634 @@
+{
+  "10": {
+    "Ours": [
+      {
+        "avg_wait": 155.6426,
+        "avg_queue_cardtime": 877.8238,
+        "avg_utilization": 0.9215,
+        "makespan": 582.73,
+        "migrations": 0,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 1.52
+      },
+      {
+        "avg_wait": 182.2271,
+        "avg_queue_cardtime": 912.8565,
+        "avg_utilization": 0.9406,
+        "makespan": 589.78,
+        "migrations": 3,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 1.58
+      },
+      {
+        "avg_wait": 171.2399,
+        "avg_queue_cardtime": 882.9083,
+        "avg_utilization": 0.9389,
+        "makespan": 581.31,
+        "migrations": 0,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 1.5
+      },
+      {
+        "avg_wait": 189.5861,
+        "avg_queue_cardtime": 1003.0922,
+        "avg_utilization": 0.933,
+        "makespan": 626.61,
+        "migrations": 1,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 1.74
+      },
+      {
+        "avg_wait": 185.8249,
+        "avg_queue_cardtime": 918.7165,
+        "avg_utilization": 0.9494,
+        "makespan": 584.83,
+        "migrations": 0,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 1.63
+      }
+    ],
+    "BF": [
+      {
+        "avg_wait": 155.6426,
+        "avg_queue_cardtime": 877.8238,
+        "avg_utilization": 0.9215,
+        "makespan": 582.73,
+        "migrations": 0,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 1.35
+      },
+      {
+        "avg_wait": 181.3345,
+        "avg_queue_cardtime": 912.6361,
+        "avg_utilization": 0.9419,
+        "makespan": 590.95,
+        "migrations": 0,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 1.52
+      },
+      {
+        "avg_wait": 171.2399,
+        "avg_queue_cardtime": 882.9083,
+        "avg_utilization": 0.9389,
+        "makespan": 581.31,
+        "migrations": 0,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 1.46
+      },
+      {
+        "avg_wait": 188.9179,
+        "avg_queue_cardtime": 1003.2396,
+        "avg_utilization": 0.9373,
+        "makespan": 626.71,
+        "migrations": 0,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 1.64
+      },
+      {
+        "avg_wait": 185.8249,
+        "avg_queue_cardtime": 918.7165,
+        "avg_utilization": 0.9494,
+        "makespan": 584.83,
+        "migrations": 0,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 1.58
+      }
+    ],
+    "SC": [
+      {
+        "avg_wait": 153.79,
+        "avg_queue_cardtime": 877.1244,
+        "avg_utilization": 0.9247,
+        "makespan": 583.2,
+        "migrations": 24,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 1.34
+      },
+      {
+        "avg_wait": 177.2516,
+        "avg_queue_cardtime": 923.8598,
+        "avg_utilization": 0.9294,
+        "makespan": 599.52,
+        "migrations": 14,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 1.53
+      },
+      {
+        "avg_wait": 173.6678,
+        "avg_queue_cardtime": 883.5094,
+        "avg_utilization": 0.94,
+        "makespan": 580.19,
+        "migrations": 9,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 1.46
+      },
+      {
+        "avg_wait": 188.6928,
+        "avg_queue_cardtime": 1001.9057,
+        "avg_utilization": 0.9351,
+        "makespan": 626.01,
+        "migrations": 12,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 1.63
+      },
+      {
+        "avg_wait": 185.8249,
+        "avg_queue_cardtime": 918.7165,
+        "avg_utilization": 0.9494,
+        "makespan": 584.83,
+        "migrations": 2,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 1.58
+      }
+    ]
+  },
+  "25": {
+    "Ours": [
+      {
+        "avg_wait": 40.9764,
+        "avg_queue_cardtime": 215.8909,
+        "avg_utilization": 0.9153,
+        "makespan": 235.46,
+        "migrations": 15,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 3.49
+      },
+      {
+        "avg_wait": 45.0189,
+        "avg_queue_cardtime": 239.3124,
+        "avg_utilization": 0.9111,
+        "makespan": 243.98,
+        "migrations": 9,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 3.62
+      },
+      {
+        "avg_wait": 40.526,
+        "avg_queue_cardtime": 221.2519,
+        "avg_utilization": 0.9178,
+        "makespan": 239.2,
+        "migrations": 13,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 4.72
+      },
+      {
+        "avg_wait": 47.8442,
+        "avg_queue_cardtime": 262.417,
+        "avg_utilization": 0.9084,
+        "makespan": 257.15,
+        "migrations": 5,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 3.6
+      },
+      {
+        "avg_wait": 48.4813,
+        "avg_queue_cardtime": 237.152,
+        "avg_utilization": 0.9288,
+        "makespan": 237.95,
+        "migrations": 1,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 2.9
+      }
+    ],
+    "BF": [
+      {
+        "avg_wait": 40.862,
+        "avg_queue_cardtime": 217.8812,
+        "avg_utilization": 0.9103,
+        "makespan": 236.29,
+        "migrations": 0,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 2.09
+      },
+      {
+        "avg_wait": 44.6738,
+        "avg_queue_cardtime": 238.0564,
+        "avg_utilization": 0.9094,
+        "makespan": 243.32,
+        "migrations": 0,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 2.42
+      },
+      {
+        "avg_wait": 40.1443,
+        "avg_queue_cardtime": 221.8067,
+        "avg_utilization": 0.9156,
+        "makespan": 239.34,
+        "migrations": 0,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 2.29
+      },
+      {
+        "avg_wait": 47.6107,
+        "avg_queue_cardtime": 262.7289,
+        "avg_utilization": 0.9101,
+        "makespan": 257.01,
+        "migrations": 0,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 2.76
+      },
+      {
+        "avg_wait": 48.4898,
+        "avg_queue_cardtime": 237.2926,
+        "avg_utilization": 0.9295,
+        "makespan": 238.31,
+        "migrations": 0,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 2.7
+      }
+    ],
+    "SC": [
+      {
+        "avg_wait": 41.8451,
+        "avg_queue_cardtime": 218.8731,
+        "avg_utilization": 0.9063,
+        "makespan": 236.18,
+        "migrations": 183,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 2.12
+      },
+      {
+        "avg_wait": 44.2818,
+        "avg_queue_cardtime": 240.5484,
+        "avg_utilization": 0.9087,
+        "makespan": 244.86,
+        "migrations": 59,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 2.46
+      },
+      {
+        "avg_wait": 40.2786,
+        "avg_queue_cardtime": 222.9525,
+        "avg_utilization": 0.9119,
+        "makespan": 240.12,
+        "migrations": 135,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 2.25
+      },
+      {
+        "avg_wait": 48.3743,
+        "avg_queue_cardtime": 262.0658,
+        "avg_utilization": 0.911,
+        "makespan": 256.72,
+        "migrations": 64,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 2.79
+      },
+      {
+        "avg_wait": 48.7629,
+        "avg_queue_cardtime": 237.3307,
+        "avg_utilization": 0.9346,
+        "makespan": 237.16,
+        "migrations": 45,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 2.87
+      }
+    ]
+  },
+  "50": {
+    "Ours": [
+      {
+        "avg_wait": 3.3887,
+        "avg_queue_cardtime": 17.9393,
+        "avg_utilization": 0.8577,
+        "makespan": 126.66,
+        "migrations": 86,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 26.26
+      },
+      {
+        "avg_wait": 3.8401,
+        "avg_queue_cardtime": 21.3384,
+        "avg_utilization": 0.8645,
+        "makespan": 129.31,
+        "migrations": 61,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 14.79
+      },
+      {
+        "avg_wait": 2.6266,
+        "avg_queue_cardtime": 14.614,
+        "avg_utilization": 0.8533,
+        "makespan": 129.62,
+        "migrations": 68,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 6.02
+      },
+      {
+        "avg_wait": 3.8581,
+        "avg_queue_cardtime": 23.6505,
+        "avg_utilization": 0.8783,
+        "makespan": 134.49,
+        "migrations": 84,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 24.15
+      },
+      {
+        "avg_wait": 3.4923,
+        "avg_queue_cardtime": 22.0738,
+        "avg_utilization": 0.8782,
+        "makespan": 129.71,
+        "migrations": 60,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 4.64
+      }
+    ],
+    "BF": [
+      {
+        "avg_wait": 3.9483,
+        "avg_queue_cardtime": 20.7983,
+        "avg_utilization": 0.8396,
+        "makespan": 128.24,
+        "migrations": 0,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 1.03
+      },
+      {
+        "avg_wait": 4.3079,
+        "avg_queue_cardtime": 25.169,
+        "avg_utilization": 0.8598,
+        "makespan": 128.75,
+        "migrations": 0,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 1.2
+      },
+      {
+        "avg_wait": 2.8828,
+        "avg_queue_cardtime": 16.6769,
+        "avg_utilization": 0.85,
+        "makespan": 128.73,
+        "migrations": 0,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 0.84
+      },
+      {
+        "avg_wait": 4.3639,
+        "avg_queue_cardtime": 25.928,
+        "avg_utilization": 0.868,
+        "makespan": 135.1,
+        "migrations": 0,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 1.23
+      },
+      {
+        "avg_wait": 3.8426,
+        "avg_queue_cardtime": 22.5709,
+        "avg_utilization": 0.87,
+        "makespan": 127.42,
+        "migrations": 0,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 1.1
+      }
+    ],
+    "SC": [
+      {
+        "avg_wait": 3.6049,
+        "avg_queue_cardtime": 19.1962,
+        "avg_utilization": 0.8484,
+        "makespan": 127.74,
+        "migrations": 1404,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 1.03
+      },
+      {
+        "avg_wait": 3.9888,
+        "avg_queue_cardtime": 23.2824,
+        "avg_utilization": 0.8562,
+        "makespan": 128.87,
+        "migrations": 1489,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 1.22
+      },
+      {
+        "avg_wait": 2.7228,
+        "avg_queue_cardtime": 15.3903,
+        "avg_utilization": 0.8631,
+        "makespan": 127.95,
+        "migrations": 1397,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 0.89
+      },
+      {
+        "avg_wait": 3.9811,
+        "avg_queue_cardtime": 24.4172,
+        "avg_utilization": 0.8643,
+        "makespan": 134.88,
+        "migrations": 1305,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 1.11
+      },
+      {
+        "avg_wait": 3.834,
+        "avg_queue_cardtime": 22.3479,
+        "avg_utilization": 0.8776,
+        "makespan": 127.31,
+        "migrations": 1344,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 1.19
+      }
+    ]
+  },
+  "100": {
+    "Ours": [
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4535,
+        "makespan": 118.01,
+        "migrations": 83,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 87.67
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4671,
+        "makespan": 118.21,
+        "migrations": 85,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 128.17
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4577,
+        "makespan": 118.62,
+        "migrations": 68,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 36.79
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4973,
+        "makespan": 116.7,
+        "migrations": 62,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 107.03
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4755,
+        "makespan": 118.08,
+        "migrations": 48,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 40.31
+      }
+    ],
+    "BF": [
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4535,
+        "makespan": 118.01,
+        "migrations": 0,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 0.11
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4671,
+        "makespan": 118.21,
+        "migrations": 0,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 0.12
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4577,
+        "makespan": 118.62,
+        "migrations": 0,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 0.12
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4973,
+        "makespan": 116.7,
+        "migrations": 0,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 0.12
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4755,
+        "makespan": 118.08,
+        "migrations": 0,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 0.12
+      }
+    ],
+    "SC": [
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4535,
+        "makespan": 118.01,
+        "migrations": 4334,
+        "completed": 948,
+        "total": 948,
+        "solve_time": 0.18
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4671,
+        "makespan": 118.21,
+        "migrations": 4550,
+        "completed": 1003,
+        "total": 1003,
+        "solve_time": 0.19
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4577,
+        "makespan": 118.62,
+        "migrations": 4573,
+        "completed": 991,
+        "total": 991,
+        "solve_time": 0.19
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4973,
+        "makespan": 116.7,
+        "migrations": 4733,
+        "completed": 1023,
+        "total": 1023,
+        "solve_time": 0.2
+      },
+      {
+        "avg_wait": 0.0,
+        "avg_queue_cardtime": 0.0,
+        "avg_utilization": 0.4755,
+        "makespan": 118.08,
+        "migrations": 4744,
+        "completed": 1015,
+        "total": 1015,
+        "solve_time": 0.2
+      }
+    ]
+  }
+}

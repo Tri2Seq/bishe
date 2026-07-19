@@ -144,71 +144,70 @@ class BaseScheduler:
 
 class FragAwareScheduler(BaseScheduler):
     """
-    碎片感知调度器（本文方法）
+    碎片感知预测式调度器（本文方法）
 
-    核心策略：
-    1. 需求到来时：分配空闲显存最多的GPU（降低碎片）
-    2. 需求结束时：查看同一机器人的下一个需求
-       - 间隔短(< release_threshold)且GPU不紧张 → 保持（省冷启动）
-       - 间隔长 或 GPU紧张 → 立即释放
-    3. 利用已知的未来需求时刻表做预加载
+    融合空间维度（碎片感知放置）与时间维度（预测式预加载/保持/释放）：
+    1. 放置：选φ(k)碎片代价最低的GPU（空闲显存最大）
+    2. 预加载：需求到来前preload_lead秒预加载模型，消除冷启动延迟
+    3. 智能保持：需求结束时综合评估间隔、未来密度、GPU压力决定保持/释放
+    4. 碎片整理迁移：GPU满时回收碎片最高的GPU上的idle分配
     """
 
-    def __init__(self, config: GPUConfig, release_threshold: float = 8.0):
+    def __init__(self, config: GPUConfig,
+                 preload_lead: float = 10.0,
+                 release_threshold: float = 20.0,
+                 prediction_horizon: float = 60.0):
         super().__init__(config)
+        self.preload_lead = preload_lead
         self.release_threshold = release_threshold
+        self.prediction_horizon = prediction_horizon
 
     def schedule(self, all_demands: Dict[int, List[GPUDemand]]) -> SchedulerMetrics:
-        # 构建每台机器人的需求段列表（仅demand类型）
         robot_demand_segs: Dict[int, List[GPUDemand]] = {}
         for robot_id, segments in all_demands.items():
             robot_demand_segs[robot_id] = [s for s in segments if s.demand_type == "demand"]
 
-        # 构建下一个需求的查找表
         next_demand: Dict[Tuple[int, int], Optional[GPUDemand]] = {}
         for robot_id, segs in robot_demand_segs.items():
             for idx, seg in enumerate(segs):
-                if idx + 1 < len(segs):
-                    next_demand[(robot_id, idx)] = segs[idx + 1]
-                else:
-                    next_demand[(robot_id, idx)] = None
+                next_demand[(robot_id, idx)] = segs[idx + 1] if idx + 1 < len(segs) else None
 
-        # 为每个需求段编号
-        demand_index: Dict[int, int] = {}  # robot_id -> current demand index
-        for rid in robot_demand_segs:
-            demand_index[rid] = 0
-
-        # 收集所有需求事件
         events = []
         for robot_id, segs in robot_demand_segs.items():
             for idx, seg in enumerate(segs):
                 events.append((seg.start, 0, "start", robot_id, seg, idx))
                 events.append((seg.end, 1, "end", robot_id, seg, idx))
+                preload_time = max(0, seg.start - self.preload_lead)
+                events.append((preload_time, -1, "preload", robot_id, seg, idx))
         events.sort(key=lambda e: (e[0], e[1]))
 
         for t, _, event_type, robot_id, seg, seg_idx in events:
-            if event_type == "start":
+            if event_type == "preload":
+                if robot_id in self.robot_gpu_map:
+                    continue
+                gpu_id = self._find_best_gpu()
+                if gpu_id is not None:
+                    self._allocate(robot_id, gpu_id, t, seg.end, "preloading")
+                self._sample_metrics(t)
+
+            elif event_type == "start":
                 self.metrics.total_demands += 1
 
                 if robot_id in self.robot_gpu_map:
-                    # 已有分配（保持策略生效）→ 无冷启动
                     self.metrics.total_gpu_time += seg.duration
                 else:
-                    # 需要新分配
                     gpu_id = self._find_best_gpu()
                     if gpu_id is not None:
                         self._allocate(robot_id, gpu_id, t, seg.end)
                         self.metrics.total_gpu_time += seg.duration
                         self.metrics.total_cold_starts += 1
                     else:
-                        # GPU全满 → 回收一个idle状态的分配
-                        reclaimed = self._reclaim_idle(t, all_demands, robot_demand_segs)
+                        reclaimed = self._reclaim_idle(t, robot_demand_segs)
                         if reclaimed is not None:
                             self._allocate(robot_id, reclaimed, t, seg.end)
                             self.metrics.total_gpu_time += seg.duration
                             self.metrics.total_cold_starts += 1
                         else:
-                            # 真的没有可用空间
                             self.metrics.total_wait_delay += self.config.cold_start_time
 
                 self._sample_metrics(t)
@@ -219,13 +218,16 @@ class FragAwareScheduler(BaseScheduler):
 
                 gpu_id = self.robot_gpu_map[robot_id]
                 nxt = next_demand.get((robot_id, seg_idx))
+                pressure = self._gpu_pressure(t)
 
-                # 决策：保持还是释放
                 should_keep = False
                 if nxt is not None:
                     gap = nxt.start - seg.end
-                    gpu_pressure = self._gpu_pressure(t)
-                    if gap <= self.release_threshold and gpu_pressure < 0.8:
+                    if gap <= self.release_threshold and pressure < 0.8:
+                        should_keep = True
+                    future_count = sum(1 for s in robot_demand_segs.get(robot_id, [])
+                                       if t < s.start < t + self.prediction_horizon)
+                    if future_count >= 2 and pressure < 0.7:
                         should_keep = True
 
                 if not should_keep:
@@ -236,26 +238,33 @@ class FragAwareScheduler(BaseScheduler):
         return self.metrics
 
     def _gpu_pressure(self, t: float) -> float:
-        """当前GPU压力：已用槽位/总槽位"""
         used = sum(len(g.active_robots) for g in self.gpu_states)
         total = self.config.total_concurrent
         return used / total if total > 0 else 1.0
 
-    def _reclaim_idle(self, t: float, all_demands: Dict[int, List[GPUDemand]],
+    def _reclaim_idle(self, t: float,
                       robot_demand_segs: Dict[int, List[GPUDemand]]) -> Optional[int]:
-        """回收当前不在demand阶段的机器人的GPU"""
+        """回收碎片最高的GPU上的idle分配"""
+        best_gpu = None
+        best_frag = -1
+        best_rid = None
         for gpu in self.gpu_states:
+            if not gpu.active_robots:
+                continue
+            frag = gpu.vram_used / gpu.vram_total if gpu.vram_free < self.config.depth_model_vram else 0
+            if frag <= best_frag:
+                continue
             for rid in list(gpu.active_robots.keys()):
-                # 检查该机器人当前是否在demand阶段
-                is_active = False
-                for seg in robot_demand_segs.get(rid, []):
-                    if seg.start <= t < seg.end:
-                        is_active = True
-                        break
+                is_active = any(s.start <= t < s.end for s in robot_demand_segs.get(rid, []))
                 if not is_active:
-                    self._release(rid, gpu.gpu_id)
-                    self.metrics.total_migrations += 1
-                    return gpu.gpu_id
+                    best_gpu = gpu.gpu_id
+                    best_frag = frag
+                    best_rid = rid
+                    break
+        if best_rid is not None:
+            self._release(best_rid, best_gpu)
+            self.metrics.total_migrations += 1
+            return best_gpu
         return None
 
 
